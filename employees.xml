@@ -1,0 +1,9 @@
+<!-- employees.xml -->
+<employees>
+  <employee status="active">
+    <fullname>Dean Martin</fullname>
+  </employee>
+  <employee status="inactive">
+    <fullname>Jerry Lewis</fullname>
+  </employee>
+</employees>
