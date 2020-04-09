@@ -52,7 +52,7 @@ If you work through this document, and do the exercises, by the end you'll be ab
 ### Check for understanding
 
 - easy: get a list of all the characters in all the shows in this document
-- hard: 
+- hard: use css selectors to count the number of links in `josh_works_archive.html`
 
 - easy: You can use any XPath or CSS query you like (see the chapter on XPath and CSS syntax for more information).
 - hard: 
@@ -503,6 +503,36 @@ I don't know why this selector requires the brackets around `status='inactive'`
 OK. This concludes our exercises that arise from [Searching an XML/HTML document (Nokogiri docs)](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces)
 
 
+# OK! Jump in complexity time!
+
+The training wheels are coming off, but we're still working will well-bounded data. 
+
+I just downloaded and saved to `docs_to_parse` the html for [https://josh.works/archive](https://josh.works/archive), as of April 2020. 
+
+Open the HTML in your web browser of choice:
+
+```
+$ open docs_to_parse/josh_works_archive.html
+```
+
+You should see something like this:
+
+![missing css, so it's ugly](/images/scraping_10.jpg)
+
+I downloaded the html and saved it, via:
+
+```
+$ curl -L https://josh.works/archive -o josh_works_archive.html
+```
+
+Of course the "live" version of the page, which is able to load CSS, looks a bit better:
+
+![live looks better](/images/scraping_11.jpg)
+
+I wanted a "static" saved version for this next round of practice. We'll move to scraping "live" websites soon!
+
+
+
 
 # Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 4 minutes:
 
@@ -532,6 +562,10 @@ OK. This concludes our exercises that arise from [Searching an XML/HTML document
 - get the full name of the last employee
 - what is the first employee status?
 - What is the name of the employee with an inactive status?
+
+### josh_works_archive.html
+
+- how many links are on the page?
 
 
 ## TODO 

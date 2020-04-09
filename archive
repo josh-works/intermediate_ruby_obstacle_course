@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Archive &middot; Josh Thompson
+    
+  </title>
+  
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+  <link rel="alternate" type="application/atom+xml" title="Josh Thompson" href="/atom.xml">
+  <link href="/mailchimp_signup.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+  	#mc_embed_signup{background:#fff; clear:left; padding: 0px;}
+  	#mc_embed_signup form {background: #fff; padding: 0px;}
+    #mc_embed_signup .button:hover {background-color: #278bd2;}
+    /*this is ugly as sin. i need to fix this.*/
+  	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+  	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+  </style>
+
+  <link type="application/atom+xml" rel="alternate" href="https://josh.works/feed.xml" title="Josh Thompson" />
+  
+  
+  
+  <!-- Twitter cards. Thanks https://www.brianbunke.com/blog/2017/09/06/twitter-cards-on-jekyll/#tweak-to-fit-your-needs -->
+  <meta name="twitter:site"    content="@josh_works">
+  <meta name="twitter:title"   content="Archive">
+
+  
+  <meta name="twitter:description" content="Programming, Learning, Climbing and Miscellaneous Thoughts.">
+  
+
+  
+  <meta name="twitter:card"  content="summary">
+  <meta name="twitter:image" content="https://josh.works/images/site_base_image.jpg">
+  
+  <!-- end of Twitter cards -->
+
+
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Josh Thompson</a>
+
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/about">about</a></small>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/archive">archive</a></small>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/turing">turing</a></small>
+          
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="/office-hours">office hours</a></small>
+          
+        </h3>
+      </header>
+
+      <main>
+        <article class="page">
+  <h1 class="page-title">Archive</h1>
+  
+<ul>
+  <li>
+    <p><a href="/2019-review"> 2019 Annual Review </a> <time class="archive-date">Jan 2020</time></p>
+  </li>
+  <li>
+    <p><a href="/mythical-creature-refactor-ogre"> Refactoring practice: Getting rid of <code class="language-plaintext highlighter-rouge">attr_accessors</code> in <code class="language-plaintext highlighter-rouge">ogre.rb</code> </a> <time class="archive-date">Jan 2020</time></p>
+  </li>
+  <li>
+    <p><a href="/mythical-creature-refactor-wizard"> Mythical Creatures: Refactoring wizard.rb </a> <time class="archive-date">Jan 2020</time></p>
+  </li>
+  <li>
+    <p><a href="/why-i-sell-things-and-you-should-too"> How to take payments via Stripe on a Static Site </a> <time class="archive-date">Dec 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/shell-script-basics-change-mac-address"> Change your MAC address with a shell script </a> <time class="archive-date">Dec 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/poodr-ch-6-acquiring-behavior-through-inheritance"> POODR Notes: Acquiring Behavior Through Inheritance (Chapter 6) </a> <time class="archive-date">Nov 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/aggregate-and-deduplicate-rails-deprecation-warnings"> Aggregate and deduplicate your deprecation warnings in Rails </a> <time class="archive-date">Oct 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/why-we-sleep-book-notes"> Notes from ‘Why We Sleep’ </a> <time class="archive-date">Sep 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/how-i-take-notes-aka-add-an-index-to-your-notebook"> How I take notes, AKA ‘Add an Index to Your Notebook’ </a> <time class="archive-date">Sep 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/find-words-formed-by-characters-and-benchmarking"> LeetCode: Words From Characters, and Benchmarking Solutions </a> <time class="archive-date">Aug 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/notes-gary-taubes-why-we-get-fat"> Book Notes: ‘Why We Get Fat’ by Gary Taube </a> <time class="archive-date">Aug 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/notes-gary-taubes-case-against-sugar"> Book Notes: ‘The Case Against Sugar’ by Gary Taube </a> <time class="archive-date">Aug 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/how-to-run-your-rails-app-in-profiling-mode"> How to Run Your Rails App in Profiling Mode </a> <time class="archive-date">Jul 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/data-dog-apm-rails-app-setup"> Setting up Application Performance Monitoring in DataDog in your Rails App </a> <time class="archive-date">Jul 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/load-testing-your-app-with-siege"> Load Testing your app with Siege </a> <time class="archive-date">Jul 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/apache-benchmark-test-page-behind-login"> Benchmarking a page protected by a login with Apache Benchmark </a> <time class="archive-date">Jun 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/deliberate-practice-avdi-grimm-rake-gem"> Deliberate Practice in Programming with Avdi Grimm and the Rake gem </a> <time class="archive-date">Jun 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-backend-prep-arrays-hashes-nested-collections"> Turing Prep Chapter 4: Arrays, Hashes, and Nested Collections </a> <time class="archive-date">Jun 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/exploring-source-code-via-griddler-and-griddler-mailgun"> Exploring source code via Griddler and Griddler-Mailgun </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-backend-prep-mythical-creatures"> Turing Prep Chapter 3: Moar Mythical Creatures </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-backend-prep-troubleshooting-guide"> Turing Prep appendix: Troubleshooting Errors </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-backend-prep-02-first-tests-and-making-them-pass"> Turing Prep Chapter 2: Run your first tests (and make them pass) </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-backend-prep-01-intro"> Turing Prep Chapter 1: Make Mod 1 Easier Than It Otherwise Would Be </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/2018-review"> 2018 In Review &amp; Thoughts on 2019 </a> <time class="archive-date">May 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/troubleshooting-chinese-character-sets-in-mysql"> Troubleshooting Chinese Character Sets in MySQL </a> <time class="archive-date">Apr 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/vcr-debug-logger-and-git-diff"> VCR’s debug_logger and <code class="language-plaintext highlighter-rouge">git diff</code> </a> <time class="archive-date">Apr 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing-in-cuba-2019"> Climbing in Cuba, 2019 </a> <time class="archive-date">Apr 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/lessons-learned-from-giving-technical-talks"> Some Lessons Learned While Preparing for Two Technical Talks </a> <time class="archive-date">Mar 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/httparty-and-to-json"> HTTParty and to_json </a> <time class="archive-date">Mar 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/remote-job-resources"> Remote Job Hunting Resources for Turing Grads and Anyone Else </a> <time class="archive-date">Feb 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/recommended-books-from-2018"> 2018 Reading Review &amp; Recommendations </a> <time class="archive-date">Feb 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/prying-into-a-stack-trace"> Pry-ing into a Stack Trace </a> <time class="archive-date">Feb 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/procfile-run-a-single-process"> Procfile: Run Just a Single Process </a> <time class="archive-date">Feb 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/whole-messages-in-slack"> Whole Messages in Slack </a> <time class="archive-date">Feb 2019</time></p>
+  </li>
+  <li>
+    <p><a href="/rails_performance_course_basic_setup"> The Complete Guide to Rails Performance: basic setup </a> <time class="archive-date">Nov 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/growing-in-first-software-development-job"> Growing in your first software development job </a> <time class="archive-date">Nov 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/primative-obsession-and-exceptional-values"> Primitive Obsession &amp; Exceptional Values </a> <time class="archive-date">Oct 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/ls_command_recursively_list_directory_contents"> <code class="language-plaintext highlighter-rouge">ls</code> command to show directory contents </a> <time class="archive-date">Oct 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/add_uniqueness_constraint_on_column_with_existing_duplicates"> Rails Migration: When you can’t add a uniqueness constraint because you already have duplicates </a> <time class="archive-date">Sep 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/sidekiq-and-background-jobs-in-rails-for-beginners"> Sidekiq and Background Jobs for Beginners </a> <time class="archive-date">Jul 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/mocks-stubs-exceptions-ruby"> Mocks &amp; Stubs &amp; Exceptions in Ruby </a> <time class="archive-date">May 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/recommended-reading"> Recommended Reading </a> <time class="archive-date">May 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/pry-tips-and-tricks"> Pry Tips and Tricks </a> <time class="archive-date">May 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/firefox-toggle-bookmark-bar-keyboard-shortcut"> MacOS: Keyboard Shortcut to Toggle Bookmarks Bar in Firefox </a> <time class="archive-date">Feb 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/test-rake-tasks-in-rails"> Testing Rake Tasks in Rails </a> <time class="archive-date">Feb 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/array-divergence"> Array divergence in Ruby </a> <time class="archive-date">Feb 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/take-back-your-attention"> Take Back Your Attention </a> <time class="archive-date">Jan 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/recommended-books-from-2017"> Recommended books from 2017 </a> <time class="archive-date">Jan 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/mysql-concat-cast"> MySQL concatenation and casting </a> <time class="archive-date">Jan 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/2017-review"> 2017 In Review &amp; Thoughts on 2018 </a> <time class="archive-date">Jan 2018</time></p>
+  </li>
+  <li>
+    <p><a href="/cultivate-curiosity-reasons-to-be-more-childlike"> Cultivate Curiosity, or ‘Reasons to be More Childlike’ </a> <time class="archive-date">Dec 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/setting-up-sql-queries-for-mere-mortals"> Setting up for ‘SQL Queries for Mere Mortals’ </a> <time class="archive-date">Dec 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/on-friction"> On Friction </a> <time class="archive-date">Dec 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/quick-dive-into-react"> Quick Dive into React </a> <time class="archive-date">Oct 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/elixir-phoenix-part-deux"> Elixir/Phoenix part deux </a> <time class="archive-date">Oct 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/first-pass-elixir-phoenix"> First pass with Elixir/Phoenix </a> <time class="archive-date">Oct 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/blocks_and_closures"> Blocks and Closures in Ruby </a> <time class="archive-date">Sep 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/metaprogramming-method-missing-01"> Metaprogramming in Ruby: method_missing </a> <time class="archive-date">Sep 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/block-value"> The How and Why of BlockValue </a> <time class="archive-date">Sep 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/turing-retrospective"> A Retrospective on Seven Months at Turing </a> <time class="archive-date">Aug 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/anki-spaced-repetition-system"> Anki and Memorization with Spaced Repetition Software </a> <time class="archive-date">Jun 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/learning-how-to-learn"> On Learning </a> <time class="archive-date">Jun 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/developer-workflow"> Workflow for developers (AKA My current tools) </a> <time class="archive-date">May 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/better-questions"> How to ask questions of experts and gain more than just an answer </a> <time class="archive-date">May 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/switching-to-jekyll"> Switching to Jekyll </a> <time class="archive-date">May 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/finding-an-edge"> Finding an Edge </a> <time class="archive-date">May 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/cleaner-controllers"> On Cleaner Controllers </a> <time class="archive-date">May 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/tour-of-d3"> Tour of D3 for Clueless Folk Like Me </a> <time class="archive-date">Apr 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/playing-with-http-send-response"> Playing with the HTTP send/response cycle in Ruby, without Faraday (“HTTP Yeah You Know Me” project) </a> <time class="archive-date">Apr 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/asheville-streets"> Streets in Asheville </a> <time class="archive-date">Feb 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/2016-most-dangerous-books"> 2016 - Biggest Lesson, Most Dangerous Books </a> <time class="archive-date">Jan 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/december-review-january-goals"> December Review, January Goals </a> <time class="archive-date">Jan 2017</time></p>
+  </li>
+  <li>
+    <p><a href="/monthly%20evaluation/2016/12/20/december-2016-goals/"> December 2016 Goals </a> <time class="archive-date">Dec 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/12/14/november-2016-review/"> November 2016 Review </a> <time class="archive-date">Dec 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/typing-for-programmers"> Typing for Programmers </a> <time class="archive-date">Dec 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/november-2016-goals"> November 2016 Goals </a> <time class="archive-date">Nov 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/october-2016-review"> October 2016 Review </a> <time class="archive-date">Nov 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/i-quit"> Quitting the shallow for the deep </a> <time class="archive-date">Oct 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/monthly%20evaluation/2016/10/19/october-2016-goals/"> October 2016 Goals </a> <time class="archive-date">Oct 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/local%20government/2016/08/24/wrapping-my-head-around-local-politics-001/"> Wrapping my head around local politics 001 </a> <time class="archive-date">Aug 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/2016/07/21/be-better-at-your-job/"> Resources for People with Jobs </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/money/2016/07/07/can-you-buy-happiness/"> How Can You Buy Happiness? </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/07/06/write-less-say-more/"> Write Less Say More </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/travel/2016/07/05/five-lessons-learned-in-buenos-aires/"> Five Lessons Learned in Buenos Aires </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/07/04/three-android-apps-i-use-every-day-and-maybe-youll-use-them-too/"> Three Android Apps I Use Every Day (and maybe you’ll use them too) </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/books/2016/07/04/the-millionaire-next-door/"> The Millionaire Next Door </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/cars/2016/07/04/avoid-a-car-accident-with-a-3-tool/"> Avoid a car accident with a $3 tool </a> <time class="archive-date">Jul 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/programming/2016/06/23/ruby-tutorial-001/"> Ruby Tutorial 001 </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/college/2016/06/05/a-message-for-high-schoolers/"> A message for high schoolers </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/06/05/12-lessons-learned-while-publishing-someone-every-day-for-a-month/"> 12 Lessons Learned While Publishing Something Every Day for a Month </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/customer-success-american-airlines-case-study"> Customer Success: American Airlines Case Study </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/customer%20success/2016/06/03/success-is-not-support/"> Success is not support </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/06/01/gratitude-3xday/"> Gratitude 3x/day </a> <time class="archive-date">Jun 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/an-intro-to-customer-success"> An Intro to Customer Success </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/62-lessons-learned-after-year-of-full-time-travel"> 62 lessons learned after one year of full-time travel </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2016/05/29/on-boldness-in-climbing/"> On Boldness In Climbing </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2016/05/28/an-announcement-and-a-teaser-for-you-rock-climbers/"> An announcement, and a teaser (for you rock climbers) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/27/social-skills-are-like-any-other-skills/"> Social skills are like any other skills </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/2016/05/26/short-is-enough/"> Short is enough </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/25/career-advice-for-millenials-ugh-i-hate-this-title/"> Career advice for Millenials. (ugh. I hate this title) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/24/who-inspires-you-and-is-still-alive/"> Who inspires you, and is still alive? </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/ok-some-new-books"> OK, some new books </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/no-new-books"> No New Books </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/21/constraints/"> Constraints </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/20/lay-a-foundation/"> Lay a foundation </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/advantage-of-low-friction-goals"> The advantage of low friction goals </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/05/18/scotts-cheap-flights/"> Travel somewhere fun. But first get on Scott’s email list </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/17/input-metrics-vs-output-metrics/"> Input metrics vs. Output metrics </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/16/give-it-30-days/"> Give it 30 days </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/05/15/fix-night-time-teeth-grinding/"> Cheap fix to night-time teeth grinding </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/14/my-favorite-question/"> My all-time favorite question to ask people (and why you should ask it too) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/05/13/how-to-never-accidentally-click-twitters-moments-again-and-to-block-anything-else-on-the-internet-you-dont-want-to-deal-with/"> How to never accidentally click Twitter’s “Moments” again (and to block anything else on the internet you don’t want to deal with) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/find-out-how-much-money-youve-made"> Find out how much money you’ve made (in your entire life) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2016/05/11/the-slight-edge-and-why-you-should-read-it/"> The Slight Edge, and why you should read it </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/2016/05/10/overcome-some-barriers-in-work-with-this-magic-phrase/"> Overcome (some) barriers in work with this magic phrase </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/what-ive-learned-from-cooking-in-36-kitchens-in-the-last-year"> What I’ve learned from cooking in 36 kitchens in the last year </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/twenties-vs-thirties"> Twenties vs. Thirties (from a feeling-behind-the-curve 27 year old.) </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/05/07/save-hundreds-by-being-willing-to-spend-20/"> Save hundreds by being willing to spend $20 </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/2016/05/06/be-a-little-better-at-personal-email/"> Be a little better at personal email </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/2016/05/05/3da2b566-310c-49c9-83dc-c000d7372a85/"> Why schedule something that doesn’t exist? </a> <time class="archive-date">May 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/everything-i-do-and-think-ive-read-in-a-book"> Everything I Do and Think I’ve Read in a Book (or, exploring the relationship between books and money) </a> <time class="archive-date">Mar 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/my-interview-with-pajamasio"> About working remotely at Litmus with Pajamas.io </a> <time class="archive-date">Mar 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/home/misc/2016/03/14/on-minimalism/"> On Minimalism </a> <time class="archive-date">Mar 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/03/05/circles-of-influence/"> Circles of Influence </a> <time class="archive-date">Mar 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/on-money-again"> On Money (again) </a> <time class="archive-date">Feb 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/thoughts-on-money-from-2013"> Thoughts on Money from 2013 </a> <time class="archive-date">Jan 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/learning-spanish-conversation-connectors"> Learning Spanish: Conversation connectors </a> <time class="archive-date">Jan 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/2015_the_year_i_didnt_think_much"> 2015: The year I didn’t think much? </a> <time class="archive-date">Jan 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/2-things-spanish"> Two Things That Are Helping Me (Finally) Learn Spanish </a> <time class="archive-date">Jan 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2016/01/09/on-fables-finishing-up-antifragile/"> On Fables: Finishing up Antifragile </a> <time class="archive-date">Jan 2016</time></p>
+  </li>
+  <li>
+    <p><a href="/limitations-of-my-own-thinking"> Limitations of My Own Thinking </a> <time class="archive-date">Nov 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/2015/10/30/upgrade-your-job/"> Upgrade your job </a> <time class="archive-date">Oct 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/so-you-want-to-work-remotely"> So you want to work remotely… </a> <time class="archive-date">Sep 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2015/09/13/2015-9-13-trip-report-new-river-gorge/"> Trip Report: New River Gorge </a> <time class="archive-date">Sep 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2015/07/25/2015-7-25-piece-by-piece/"> Piece by Piece </a> <time class="archive-date">Jul 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/type-publish-done"> Type. Publish. Done. </a> <time class="archive-date">Jul 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/2015/07/19/2015-7-19-maybe-now-is-not-the-right-time/"> Maybe “Now” Is Not the Right Time </a> <time class="archive-date">Jul 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/a-little-bit-of-slope-makes-up-for-a-lot-of-y-intercept"> A little bit of slope makes up for a lot of y-intercept </a> <time class="archive-date">Jun 2015</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/11/02/a-delicate-mix-of-chess-and-bear-wrestling/"> “A delicate mix of chess… and bear wrestling” </a> <time class="archive-date">Nov 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/10/29/do-not-work-in-isolation/"> Do Not Work in Isolation </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/10/21/a-small-goal-is-better-than-a-grand-plan/"> A Small Goal is Better than a Grand Plan </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/10/20/can-you-recover-from-months-years-of-not-climbing/"> Can You Recover From Months (YEARS!) of Not Climbing? </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/climbing/2014/10/18/letter-to-two-climbers-part-2/"> Letter to Two Climbers (Part 2) </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/climbing/2014/10/12/letter-to-two-climbers-part-1/"> Letter to Two Climbers (Part 1) </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/10/06/your-community-should-not-be-local/"> Your “Community” Should Not Be Local </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/10/01/why-your-belayer-is-keeping-you-from-climbing-harder/"> Why Your Belayer is Keeping You from Climbing Hard(er) </a> <time class="archive-date">Oct 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/09/29/three-levels-of-competence/"> Three Levels of Competence </a> <time class="archive-date">Sep 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/09/27/dont-focus-on-the-present/"> Don’t Focus on the Present </a> <time class="archive-date">Sep 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2014/09/24/injury-impedes-improvement/"> Injury Impedes Improvement </a> <time class="archive-date">Sep 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/07/30/150-custom-made-standing-desk/"> $150 Custom-Made Standing Desk </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/07/27/tiny-habits-take-2/"> Tiny Habits take 2 </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/growth/2014/07/25/taking-the-plunge-with-colemak/"> Taking the Plunge with Colemak </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/07/25/focus-one-thing-at-a-time/"> Focus: One Thing at a Time </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/07/23/winter-on-two-pairs-of-socks/"> Winter on Two Pairs of Socks </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/07/23/benefits-of-helplessness/"> Benefits of helplessness </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/07/22/hidden-damages-of-the-intovert-vs-extrovert-debate/"> Hidden Damages of the Introvert vs. Extrovert “debate” </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/be-gentle-to-you"> Be Gentle to You </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/07/19/blessed-to-be-sick/"> Blessed to be Sick </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/growth/2014/07/17/a-40-hour-work-week/"> A 40 Hour Work Week </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/stop-yelling-on-the-internet-or-a-better-use-for-the-caps-lock-key"> STOP YELLING ON THE INTERNET, or, A Better Use for the Caps Lock Key </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/learn-to-type-again"> Learn to Type - Again </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/07/12/the-present-you/"> The Present You </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/07/12/cooking-is-so-much-more/"> “Cooking” is so much more </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/07/11/typing-in-colemac-2-0/"> Typing in Colemac 2.0 </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/07/09/a-five-hour-experiment/"> A Five-Hour Experiment </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/climbing/misc/2014/07/08/use-an-alarm-to-go-to-bed/"> Use an Alarm to Go to Bed </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/07/08/illdefined-success-is-unattainable/"> Illdefined Success is Unattainable </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/growth/home/2014/07/07/what-do-you-do/"> What Do You Do? </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/07/06/the-power-of-an-audacious-goal/"> The Power of an Audacious Goal </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/growth/home/2014/07/05/corollas-and-u-hauls/"> Corollas and U-Hauls </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/07/03/habits-take-preparation/"> Habits Take Preparation </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2014/07/02/accomplishments-and-achievements/"> Accomplishments and Achievements </a> <time class="archive-date">Jul 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/06/30/change/"> Change </a> <time class="archive-date">Jun 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/why-i-eat-bacon-every-day-and-you-should-too"> Why I Eat Bacon Every Day (And You Should Too) </a> <time class="archive-date">Apr 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2014/04/04/fry-your-pizza/"> Fry Your Pizza </a> <time class="archive-date">Apr 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/2014/04/01/playing-pranks/"> Playing Pranks </a> <time class="archive-date">Apr 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/how-to-move"> How to Move </a> <time class="archive-date">Mar 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/remote_work/2014/03/25/falling-into-place/"> Falling into Place </a> <time class="archive-date">Mar 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/jobs/growth/2014/03/20/back-in-the-saddle/"> Back in the Saddle </a> <time class="archive-date">Mar 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2014/03/16/act-a-fool-or-motion-vs-action/"> Act a Fool, or: Motion vs. Action </a> <time class="archive-date">Mar 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/2014/02/07/five-days-to-inbox-zero-how-to-get-control-of-your-email/"> Five Days to Inbox Zero: How to Get Control of your Email </a> <time class="archive-date">Feb 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/2014/01/09/if-you-can-learn-anything-should-you/"> Talent is Overrated </a> <time class="archive-date">Jan 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/2014/01/01/how-to-complete-a-project/"> How to complete a project </a> <time class="archive-date">Jan 2014</time></p>
+  </li>
+  <li>
+    <p><a href="/make-hard-things-easier-by-removing-friction"> Make Hard Things Easier by Removing Friction </a> <time class="archive-date">Dec 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2013/12/01/monthly-review-november/"> Monthly Review: November </a> <time class="archive-date">Dec 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/2013/11/14/processes-vs-goals-or-systems-vs-accomplishments/"> Processes Vs. Goals (or, Systems vs. Accomplishments) </a> <time class="archive-date">Nov 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/home/2013/11/08/monthly-review-october/"> Monthly Review: October </a> <time class="archive-date">Nov 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/11/06/redefining-success/"> Redefining Success </a> <time class="archive-date">Nov 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/10/07/how-to-fly-like-a-boss/"> How to fly… like a boss </a> <time class="archive-date">Oct 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/persistence"> Persistence </a> <time class="archive-date">Sep 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/climbing/2013/09/10/train-hard/"> Train Hard </a> <time class="archive-date">Sep 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/09/03/content-but-restless/"> Content but Restless </a> <time class="archive-date">Sep 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/2013/08/28/mentors-and-attitude/"> Mentors and Attitude </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/2013/08/23/feedback-pt-2/"> Feedback pt. 2 </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/08/20/things-you-cant-do-from-behind-a-computer-pt-1/"> Things You Can’t Do from Behind a Computer, pt. 1 </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/08/15/on-feedback/"> On Feedback </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/08/12/20-things-20-year-olds-dont-get/"> 20 Things 20-Year-Olds Don’t Get </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2013/08/06/cancel-your-cable-seriously/"> Cancel Your Cable. Seriously. </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2013/08/02/waking-up-early-part-3/"> Waking Up Early, Part 3 </a> <time class="archive-date">Aug 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/07/31/dream-big-and-build-optionality/"> Dream Big, and Build Optionality </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2013/07/25/my-good-friends-who-dont-know-me/"> My Good Friends (Who Don’t Know Me) </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/why-i-use-a-kindle"> Why I use a Kindle </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/rules-for-fighting-fair"> Rules for Fighting Fair </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/misc/2013/07/15/waking-up-early-2-0/"> Waking Up Early 2.0 </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2013/07/10/crock-pots-are-foolproof-right/"> Crock Pots are Foolproof, Right? </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/home/2013/07/08/first-five-meals-from-the-4-hour-chef/"> First five meals from The 4-Hour Chef </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/simplify-simplify-simplify"> Simplify, simplify, simplify </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/june-trip-new-river-gorge"> June trip to the New River Gorge </a> <time class="archive-date">Jul 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/2013/06/17/krav-maga-or-crush-balls-gouge-eyes-and-break-bones/"> Krav Maga, or “Crush Balls, Gouge Eyes, and Break Bones” </a> <time class="archive-date">Jun 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing-in-decking-range"> Climbing in “decking range” </a> <time class="archive-date">Jun 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/climbing/2013/06/03/training-for-climbing-progress-update/"> Training for climbing (progress update) </a> <time class="archive-date">Jun 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/friends-dont-let-friends-shortrope"> Friends Don’t Let Friends Shortrope </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/climbing/2013/05/12/how-to-be-an-awesome-belayer/"> How to be an awesome belayer </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/daily-exercise-russian-kettlebells"> Daily Exercise - Russian Kettlebells </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/misc/2013/05/07/how-to-wake-up-early/"> How to Wake Up Early </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/intentional-habit-building"> Lifestyle Design (AKA Intentional Habit Building) </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/habits-milestones-climbing"> Habits, Milestones, and Climbing </a> <time class="archive-date">May 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/growth/misc/2013/04/22/becoming-an-early-riser/"> Becoming an Early Riser </a> <time class="archive-date">Apr 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/preparing-to-adopt-a-habit"> Preparing to adopt a habit </a> <time class="archive-date">Apr 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/i-once-worked-hard"> I Once Worked Hard </a> <time class="archive-date">Apr 2013</time></p>
+  </li>
+  <li>
+    <p><a href="/three-ways-to-decide-what-to-be-when-you-grow-up"> Three Ways to Decide What to be When You Grow Up </a> <time class="archive-date">Dec 2012</time></p>
+  </li>
+</ul>
+
+
+</article>
+
+      </main>
+
+    </div>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64805769-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    
+     <script src="instantpage-2.0.0.js?v1" type="module" defer></script> 
+  </body>
+</html>
