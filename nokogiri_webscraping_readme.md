@@ -1,5 +1,5 @@
 
-_This repo exists because I worked through [](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c), and one of the steps made a HUGE leap with nokogiri knowledge, and I felt skipped a huge piece I didn't understand. I made the exercise work, but I still didn't know enough about nokogiri to go solve novel problems with it._
+_This repo exists because I worked through [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c), and step 10 made a HUGE leap with nokogiri knowledge, and I felt skipped a huge piece I didn't understand. I made the exercise work, but I still didn't know enough about nokogiri to go solve novel problems with it._
 
 _This collection of exercises will *quickly* get you comfortable enough in nokogiri to do fascinating things quickly using it_
 
@@ -199,6 +199,23 @@ Desired result:
 ![using both "keys" in the xml doc](/images/scraping_05.jpg)
 
 
+### Question: get the names of all sitcoms
+
+Desired output:
+
+```
+# => ["<name>Married with Children</name>", 
+#     "<name>Perfect Strangers</name>"]
+```
+
+Using a CSS Selector!
+
+```ruby
+@doc.css('sitcoms name')
+@doc.css('sitcom name')  # both of these work
+```
+
+
 # Now the tutorial jumps to using `parts.xml`
 
 In your terminal:
@@ -320,7 +337,27 @@ get the tires for `bobs bikes`, and `alices' autoparts`.
 
 ![these are the xlmlns things](/images/scraping_07.jpg)
 
-Now, lets shorten up the code a bit.
+Now, lets translate this to CSS:
+
+### Question: get the first set of tires (alices auto parts) using css
+
+```ruby
+@doc.css("xmlns|tire", "xmlns" => "http://alicesautoparts.com/")
+
+# or we can use modern hash syntax:
+@doc.css("xmlns|tire", xmlns: "http://alicesautoparts.com/")
+```
+
+### Question: get _just the names of the tires_ in an array
+
+Desired output:
+
+```ruby
+@doc.css("xmlns|tire", xmlns: "http://alicesautoparts.com/").map { |node| node.text }
+=> ["all weather", "studded", "extra wide"]
+```
+
+# atom.xml examples
 
 Jump over to another pry session. this time we're using `atom.xml`:
 
@@ -413,21 +450,21 @@ And, good news:
 
 the end of the `namespacing` conversation links to:
 
-[http://tenderlovemaking.com/2009/04/23/namespaces-in-xml/](http://tenderlovemaking.com/2009/04/23/namespaces-in-xml/), wich 404s. 
+[http://tenderlovemaking.com/2009/04/23/namespaces-in-xml/](http://tenderlovemaking.com/2009/04/23/namespaces-in-xml/), which 404s. 
 
 Turns out the page has been moved without a redirect to:
 
 [https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html](https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html)
 
 
-# Slop?
+# Employees.xml examples
 
 ```ruby
 # from new pry session
 require 'nokogiri'
-
-
 ```
+
+This is originally discussed under the concept of "slop", because there's a `Nokogiri` mode called "slop", which the docs say over and over is a bad idea to use. So, instead of using the "sloppy" examples, we'll just work through the examples with regular non-sloppy `Nokogiri#css` selectors. 
 
 ### Question: Get the full name of the last employee
 
@@ -438,36 +475,36 @@ Desired output:
 ```
 
 ```ruby
-
 @doc.css("employees").css("employee").last.css("fullname").text
 => "Jerry Lewis"
 ```
 
+This is the first time I've chained `.css` onto itself: 
+
+![double css what does it mean](/images/scraping_09.jpg)
+
+
+
 ### Question: what is the first employee status?
 
---------------------
-
-
+```ruby
+@doc.css('employee').first['status']
+=> "active"
 ```
 
-# navigate!
-doc.employees.employee.last.fullname.content # => "Jerry Lewis"
+###  Question: What is the name of the employee with an inactive status?
 
-------------------> Starting here <------------------
-# access node attributes!
-doc.employees.employee.first["status"] # => "active"
-
-# use some xpath!
-doc.employees.employee("[@status='active']").fullname.content # => "Dean Martin"
-doc.employees.employee(:xpath => "@status='active'").fullname.content # => "Dean Martin"
-
-# use some css!
-doc.employees.employee("[status='active']").fullname.content # => "Dean Martin"
-doc.employees.employee(:css => "[status='active']").fullname.content # => "Dean Martin"
+```ruby
+@doc.css("[status='inactive']").css('fullname').text
 ```
---------------------
 
-# Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 60 seconds:
+I don't know why this selector requires the brackets around `status='inactive'`
+
+OK. This concludes our exercises that arise from [Searching an XML/HTML document (Nokogiri docs)](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces)
+
+
+
+# Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 4 minutes:
 
 
 ### shows.xml
@@ -475,11 +512,14 @@ doc.employees.employee(:css => "[status='active']").fullname.content # => "Dean 
 - list of all the characters in all the shows in this document
 - Get the characters who performed in Dramas
 - Get the first drama name back in _four_ different ways
+- get the names of sitcoms
 
 ### parts.xml
 
 - Get all the tires belonging to 'http://aliceautoparts.com/' using `xpath`
 - Get all the tires belonging to an `xmlns` value of `http://bobsbikes.com/` using `xpath`
+- get the first set of tires (alices auto parts) using `css`
+- get _just the names of the tires_ in an array
 
 ### atom.xml
 
@@ -491,8 +531,7 @@ doc.employees.employee(:css => "[status='active']").fullname.content # => "Dean 
 
 - get the full name of the last employee
 - what is the first employee status?
-
-
+- What is the name of the employee with an inactive status?
 
 
 ## TODO 
