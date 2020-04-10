@@ -852,8 +852,9 @@ Nailed it! Here's the change that we made:
 
 ![the update](/images/scraping_17.jpg)
 
+And this gives us 221 results. 
 
-I don't know about you, but this is helping me figure out how all this crap works.
+
 
 
 # Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 8 minutes:
@@ -891,6 +892,7 @@ I don't know about you, but this is helping me figure out how all this crap work
 - using the `a` css selector, what is the `path` of the last link in the document?
 - Generate a list of all `href` attributes on the page
 - Generate an array of strings, representing every single `href` path on the page
+ - Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. Don't include non-archive URLs. (should be 221 results long)
 
 
 ## TODO 
