@@ -1,4 +1,3 @@
-
 _This repo exists because I worked through [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c), and step 10 made a HUGE leap with nokogiri knowledge, and I felt skipped a huge piece I didn't understand. I made the exercise work, but I still didn't know enough about nokogiri to go solve novel problems with it._
 
 _This collection of exercises will *quickly* get you comfortable enough in nokogiri to do fascinating things quickly using it_
@@ -731,11 +730,133 @@ but all of these options _did_ work:
 => "/three-ways-to-decide-what-to-be-when-you-grow-up"
 ```
 
-I have no good mental model of this kind of thing that makes me nod and say "ah, that makes sense". 
+I have no good mental model of this kind of thing that makes me nod and say "ah, that makes sense", but I expect more will become clear in time.
+
+### Question: Grabbing the last `time` html element, "jump" to the associated URL path.
 
 
+```ruby
+@doc.css('time').last
+=> #(Element:0x3fc4b8c99408 {
+  name = "time",
+  attributes = [ #(Attr:0x3fc4b8c9937c { name = "class", value = "archive-date" })],
+  children = [ #(Text "Dec 2012")]
+  })
+```
 
-# Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 4 minutes:
+And by _only adding to the query_, how can I get the link next to it?
+
+As a reminder, here's the html for this portion of the document:
+
+```html
+  <li>
+    <p><a href="/three-ways-to-decide-what-to-be-when-you-grow-up"> Three Ways to Decide What to be When You Grow Up </a> <time class="archive-date">Dec 2012</time></p>
+  </li>
+</ul>
+```
+
+Phew. Took a lot of exploring, quite a phew calls of `thing.class` to see what I had, and then called `thing.methods` regularly to see if any of the methods that were listed looked promising. 
+
+I found `#attribute` in the list of methods, it expected an argument, so I passed in `href` and that got me what I wanted:
+
+```ruby
+@doc.css('time').last.parent.css("a").attribute("href").value
+=> "/three-ways-to-decide-what-to-be-when-you-grow-up"
+```
+
+This is the first time we've had to make much use of the `parent` method; it jumps "up" a level of the node tree, and then we use the `css` method to search the css of the node.
+
+### Question: Generate a list of all `href` attributes on the page
+
+Expected result:
+
+![scraping](/images/scraping_14.jpg)
+
+It should be 226 items long, and each item will be an instance of `Nokogiri::XML::Attr`
+
+```ruby
+@doc.css('a').map { |node| node.attribute("href") }
+```
+
+### Question: Generate an array of strings, representing every single `href` path on the page
+
+Desired output:
+
+![list of paths](/images/scraping_15.jpg)
+
+As you might imagine, this is similar to the above question:
+
+```ruby
+@doc.css('a').map { |node| node.attribute("href").value }
+=> => ["/",
+ "/about",
+ "/archive",
+ "/turing",
+ "/office-hours",
+ "/2019-review",
+ # etc
+```
+
+
+### Generate a list of paths, but restricting the results to the `archives`  section of the page
+
+we're ready to re-address an earlier question. we can generate lists of things, and we can jump to "sibling" elements.
+
+Remember how we "jumped" nodes when working on a single result?
+
+Rebuild that in pry. Here's how I "rebuilt" it. remember - call `to_a` regularly to figure out what you're looking at.
+
+```ruby
+@doc.css('time').last
+@doc.css('time').last.parent
+@doc.css('time').last.parent.css('a')
+@doc.css('time').last.parent.css('a').attribute("href")
+@doc.css('time').last.parent.css('a').attribute("href").value
+```
+
+So, where do we "insert" an iterator to grab results from _every_ `time` element that matches our criteria, rather than just a single instance?
+
+```ruby
+@doc.css('time').last.parent.css('a').attribute("href").value
+#                 ^^ this `last` looks like a good candidate
+
+```
+
+We're going to have to combine three things:
+1. a result set (all 221 matching `Nokogiri::XML::Element` objects)
+2. An iterator to map through each of the results
+3. A `Nokogiri#css` select statement to gather the intended result, applied to each of the 221 matching results.
+
+Lets see how these steps apply to the earlier "test" statement we built, to grab the value we wanted, but only from the last one on the page:
+
+```ruby
+@doc.css('time').last.parent.css('a').attribute("href").value
+```
+
+![breaking the statement down](/images/scraping_16.jpg)
+
+
+So, we need to swap that yellow box from a single statement to something that lets us apply step 3 to all elements.
+
+```ruby
+@doc.css('time').map { |xml_element| xml_element.parent.css('a').attribute("href").value }
+=> ["/2019-review",
+ "/mythical-creature-refactor-ogre",
+ "/mythical-creature-refactor-wizard",
+ "/why-i-sell-things-and-you-should-too",
+ "/shell-script-basics-change-mac-address",
+ # etc
+```
+
+Nailed it! Here's the change that we made:
+
+![the update](/images/scraping_17.jpg)
+
+
+I don't know about you, but this is helping me figure out how all this crap works.
+
+
+# Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 8 minutes:
 
 
 ### shows.xml
@@ -767,6 +888,9 @@ I have no good mental model of this kind of thing that makes me nod and say "ah,
 ### josh_works_archive.html
 
 - how many links are on the page?
+- using the `a` css selector, what is the `path` of the last link in the document?
+- Generate a list of all `href` attributes on the page
+- Generate an array of strings, representing every single `href` path on the page
 
 
 ## TODO 
