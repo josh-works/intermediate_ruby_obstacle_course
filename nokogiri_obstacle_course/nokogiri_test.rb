@@ -61,41 +61,79 @@ class NokogiriTest < MiniTest::Test
     assert_equal "The A-Team", results_2.text
     assert_equal "The A-Team", results_3.text
     assert_equal "The A-Team", results_4.text
-    
   end
-  # - get the names of sitcoms
-  # 
+  
+  def test_get_the_names_of_all_sitcoms
+    # get the names of sitcoms
+    doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
+    
+    results = doc.css('sitcoms name')
+    
+    assert_equal 2, results.count
+    assert_includes results.map {|n| n.text }, "Perfect Strangers"
+    assert_includes results.map {|n| n.text }, "Married with Children"
+  end
+    
+  
   ##################################################
   #     these tests all reference parts.xml        #
   ##################################################
-  # 
-  # - Get all the tires belonging to 'http://aliceautoparts.com/' using `xpath`
-  # - Get all the tires belonging to an `xmlns` value of `http://bobsbikes.com/` using `xpath`
-  # - get the first set of tires (alices auto parts) using `css`
-  # - get _just the names of the tires_ in an array
-  # 
-  # ### atom.xml
+  def test_get_all_tires_belonging_to_aliceautoparts_using_xpath
+    # Get all the tires belonging to 'http://aliceautoparts.com/' using `xpath`
+    doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
+    
+    results = doc.xpath('//xmlns:tire', xmlns: "http://alicesautoparts.com/")
+    
+    assert_equal 3, results.count
+  end
+  
+  def test_get_all_tires_belonging_to_bobsbikes_using_xpath
+    skip
+    # Get all the tires belonging to an `xmlns` value of `http://bobsbikes.com/` using `xpath`
+    doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
+    
+    results = doc.xpath('//')
+    
+    assert_equal 3, results.count
+  end
+  
+  def test_get_tires_from_aliceautoparts_using_css
+    skip
+    # get the first set of tires (alices auto parts) using `css`
+    doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
+    
+    results = doc.xpath('//')
+    
+    assert_equal 3, results.count
+  end
+  
+  def test_get_just_names_of_tires_in_an_array
+    skip
+    # get _just the names of the tires_ in an array
+    doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
+    
+    results = doc.xpath('//')
+    
+    assert_equal 3, results.count
+  end
+  
+  
   ##################################################
   #     these tests all reference atom.xml        #
-  ##################################################
-  # 
+  ################################################## 
   # - get all titles using `xpath`
   # - get all titles using `css`
-  # 
+  
   ##################################################
   #   these tests all reference employees.xml      #
   ##################################################
-  # ### employees.xml
-  # 
   # - get the full name of the last employee
   # - what is the first employee status?
   # - What is the name of the employee with an inactive status?
-  # 
+  
   #####################################################
   # these tests all reference josh_works_archive.html #
-  #####################################################
-  # ### josh_works_archive.html
-  # 
+  ##################################################### 
   # - how many links are on the page?
   # - using the `a` css selector, what is the `path` of the last link in the document?
   # - Generate a list of all `href` attributes on the page
