@@ -903,3 +903,4 @@ And this gives us 221 results.
 
 - [CSS Selector Reference (W3 schools)](https://www.w3schools.com/cssref/css_selectors.asp)
 - [Child and Sibling Selectors (CSS Tricks)](https://css-tricks.com/child-and-sibling-selectors/)
+- [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet (Medium.com/@LindaVivah)](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c)

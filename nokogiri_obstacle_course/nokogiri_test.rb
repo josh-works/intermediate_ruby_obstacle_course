@@ -13,6 +13,8 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference shows.xml        #
   ##################################################
   def test_list_all_characters
+    # list of all the characters in all the shows in this document
+
     # Unless otherwise noted, every file we'll be reading is located
     # within the /docs_to_parse directory. 
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
@@ -29,6 +31,7 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_list_all_characters_in_drams
+    # Get the characters who performed in Dramas
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
     results = doc.xpath('//dramas//character')
@@ -45,9 +48,21 @@ class NokogiriTest < MiniTest::Test
     assert_equal "\"Howling Mad\" Murdock", results.last.text
   end
 
-  # - list of all the characters in all the shows in this document
-  # - Get the characters who performed in Dramas
-  # - Get the first drama name back in _four_ different ways
+  def test_get_first_drama_name_in_four_different_ways  
+    # Get the first drama name back in _four_ different ways, using css and at_css
+    doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
+    
+    results_1 = doc.css('dramas name').first
+    results_2 = doc.css('drama name').first
+    results_3 = doc.at_css('dramas name')
+    results_4 = doc.at_css('drama name')
+    
+    assert_equal "The A-Team", results_1.text
+    assert_equal "The A-Team", results_2.text
+    assert_equal "The A-Team", results_3.text
+    assert_equal "The A-Team", results_4.text
+    
+  end
   # - get the names of sitcoms
   # 
   ##################################################
