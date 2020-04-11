@@ -19,11 +19,17 @@ At same relative path as this `readme`, do
 $ gem install nokogiri
 ```
 
-start a pry session
+~start a pry session~
+
+Just kidding. I converted all of my subsequent learnings to minitest assertions. In your terminal, make sure you've `cd`'ed to this folder, then run 
 
 ```
-$ pry 
+$ ruby nokogiri_test.rb
 ```
+
+You should see a bunch of skips. Unskip the first test, and make it pass. 
+
+For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistence. 
 
 in the prompt:
 
