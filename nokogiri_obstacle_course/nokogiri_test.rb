@@ -125,8 +125,27 @@ class NokogiriTest < MiniTest::Test
   ##################################################
   #     these tests all reference atom.xml        #
   ################################################## 
-  # - get all titles using `xpath`
-  # - get all titles using `css`
+  def test_get_all_titles_using_xpath
+    # get all titles using `xpath`
+    doc = Nokogiri::XML(File.open('docs_to_parse/atom.xml'))
+    
+    results = doc.xpath('//xmlns:title')
+    
+    expected = ['Example Feed', 'Atom-Powered Robots Run Amok']
+    assert_equal 2, results.count
+    assert_equal expected, results.map { |n| n.text }
+  end
+  
+  def test_get_all_titles_using_css
+    # get all titles using css
+    doc = Nokogiri::XML(File.open('docs_to_parse/atom.xml'))
+    
+    results = doc.css('title')
+    
+    expected = ['Example Feed', 'Atom-Powered Robots Run Amok']
+    assert_equal 2, results.count
+    assert_equal expected, results.map { |n| n.text }
+  end
   
   ##################################################
   #   these tests all reference employees.xml      #
