@@ -13,12 +13,13 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference shows.xml        #
   ##################################################
   def test_list_all_characters
+    skip
     # list of all the characters in all the shows in this document
 
     # every file we'll be reading is locate within the /docs_to_parse directory. 
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
-    results = doc.xpath('//character')
+    # results = doc.xpath('//character')
     # remember, use pry in here to inspect your results. Use 
     # the #to_a method to easily see in your terminal what sort of 
     # results you're getting back from Nokogiri
@@ -30,10 +31,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_list_all_characters_in_drams
+    skip
     # Get the characters who performed in Dramas
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
-    results = doc.xpath('//dramas//character')
+    # results = doc.xpath('//dramas//character')
     
     # Desired output:
     # [#(Element:0x3fbfb649df58 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
@@ -48,6 +50,7 @@ class NokogiriTest < MiniTest::Test
   end
 
   def test_get_first_drama_name_in_four_different_ways  
+    skip
     # Get the first drama name back in _four_ different ways, using css and at_css
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
@@ -63,10 +66,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_the_names_of_all_sitcoms
+    skip
     # get the names of sitcoms
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
-    results = doc.css('sitcoms name')
+    # results = doc.css('sitcoms name')
     
     assert_equal 2, results.count
     assert_includes results.map {|n| n.text }, "Perfect Strangers"
@@ -78,10 +82,11 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference parts.xml        #
   ##################################################
   def test_get_all_tires_belonging_to_aliceautoparts_using_xpath
+    skip
     # using xpath, get tires with the XML namespace value `http://alicesautoparts.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.xpath('//xmlns:tire', xmlns: "http://alicesautoparts.com/")
+    # results = doc.xpath('//xmlns:tire', xmlns: "http://alicesautoparts.com/")
     
     assert_equal 3, results.count
     assert_includes results.map { |n| n.text }, "all weather"
@@ -90,10 +95,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_all_tires_belonging_to_bobsbikes_using_xpath
+    skip
     # using xpath, get tires with the XML namespace value `http://bobsbikes.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.xpath('//id:tire', id: "http://bobsbikes.com/")
+    # results = doc.xpath('//id:tire', id: "http://bobsbikes.com/")
     
     assert_equal 2, results.count
     assert_includes results.map { |n| n.text }, "street"
@@ -101,10 +107,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_tires_from_aliceautoparts_using_css
+    skip
     # using css, get first set of tires (alices auto parts)
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.css('xmlns|tire', xmlns: 'http://alicesautoparts.com/')
+    # results = doc.css('xmlns|tire', xmlns: 'http://alicesautoparts.com/')
     
     assert_equal 3, results.count
     assert_includes results.map { |n| n.text }, "all weather"
@@ -113,10 +120,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_just_names_of_tires_in_an_array
+    skip
     # get _just the names of the tires_ in an array
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.css('xmlns|tire', xmlns: "http://alicesautoparts.com/").map { |n| n.text }
+    # results = doc.css('xmlns|tire', xmlns: "http://alicesautoparts.com/").map { |n| n.text }
     expected = ['all weather', 'studded', 'extra wide']
     assert_equal results, expected
   end
@@ -126,10 +134,11 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference atom.xml        #
   ################################################## 
   def test_get_all_titles_using_xpath
+    skip
     # get all titles using `xpath`
     doc = Nokogiri::XML(File.open('docs_to_parse/atom.xml'))
     
-    results = doc.xpath('//xmlns:title')
+    # results = doc.xpath('//xmlns:title')
     
     expected = ['Example Feed', 'Atom-Powered Robots Run Amok']
     assert_equal 2, results.count
@@ -137,10 +146,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_all_titles_using_css
+    skip
     # get all titles using css
     doc = Nokogiri::XML(File.open('docs_to_parse/atom.xml'))
     
-    results = doc.css('title')
+    # results = doc.css('title')
     
     expected = ['Example Feed', 'Atom-Powered Robots Run Amok']
     assert_equal 2, results.count
@@ -151,28 +161,31 @@ class NokogiriTest < MiniTest::Test
   #   these tests all reference employees.xml      #
   ##################################################
   def test_full_name_last_employee
+    skip
     # get the full name of the last employee
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
     
-    results = doc.css('employee').last.css('fullname').text
+    # results = doc.css('employee').last.css('fullname').text
     
     assert_equal "Jerry Lewis", results
   end
   
   def test_status_first_employee
+    skip
     # what is the first employee status?
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
     
-    results = doc.css('employee').first['status']
+    # results = doc.css('employee').first['status']
     
     assert_equal "active", results
   end
   
   def test_name_of_inactive_employee
+    skip
     # What is the name of the employee with an inactive status?
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
     
-    results = doc.css('employees').css("[status='inactive']").css('fullname').text
+    # results = doc.css('employees').css("[status='inactive']").css('fullname').text
     
     assert_equal "Jerry Lewis", results
   end
@@ -181,15 +194,17 @@ class NokogiriTest < MiniTest::Test
   # these tests all reference josh_works_archive.html #
   #####################################################
   def test_total_link_count
+    skip
     # how many links are on the page?
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
     
-    results = doc.css('a')
+    # results = doc.css('a')
     
     assert_equal 226, results.count
   end
   
   def test_get_path_of_last_link
+    skip
     # using the `a` css selector, what is the `path` of the last link in the document?
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
     
@@ -199,11 +214,12 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_list_all_hrefs_on_page
+    skip
     # Generate a list of all `href` attributes on the page
     # each attribute should be a Nokogiri::XML::Attr
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
 
-    results = doc.css('a').map { |e| e.attribute('href') }
+    # results = doc.css('a').map { |e| e.attribute('href') }
     
     # results should look like:
     # [#(Attr:0x3fc00bcf596c { name = "href", value = "/" }),
@@ -217,10 +233,11 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_array_of_strings_of_every_path_on_page
+    skip
     # Generate an array of strings, representing every single `href` path on the page
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
     
-    results = doc.css('a').map {|n| n.attributes["href"].value }
+    # results = doc.css('a').map {|n| n.attributes["href"].value }
     
     assert_equal 226, results.count
     assert_includes results, "/three-ways-to-decide-what-to-be-when-you-grow-up"
@@ -232,6 +249,7 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_get_path_for_first_link_that_has_sibling_element_of_time_class
+    skip
     # find the first link that has a `time` class associated with it.
     # traverse the DOM from that time class to the associated URL
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
@@ -242,10 +260,12 @@ class NokogiriTest < MiniTest::Test
   end
   
   def test_list_all_paths_of_links_in_archive_portion_of_page
+    skip
     # Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. 
     # Don't include non-archive URLs. (should be 221 results long)
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
-    results = doc.css('time').map { |n| n.parent.css('a').attribute('href').value }
+    
+    # results = doc.css('time').map { |n| n.parent.css('a').attribute('href').value }
     
     assert_equal 221, results.count
     refute_includes results, '/about'
