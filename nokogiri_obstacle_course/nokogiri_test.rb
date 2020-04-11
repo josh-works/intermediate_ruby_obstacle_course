@@ -150,9 +150,32 @@ class NokogiriTest < MiniTest::Test
   ##################################################
   #   these tests all reference employees.xml      #
   ##################################################
-  # - get the full name of the last employee
-  # - what is the first employee status?
-  # - What is the name of the employee with an inactive status?
+  def test_full_name_last_employee
+    # get the full name of the last employee
+    doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
+    
+    results = doc.css('employee').last.css('fullname').text
+    
+    assert_equal "Jerry Lewis", results
+  end
+  
+  def test_status_first_employee
+    # what is the first employee status?
+    doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
+    
+    results = doc.css('employee').first['status']
+    
+    assert_equal "active", results
+  end
+  
+  def test_name_of_inactive_employee
+    # What is the name of the employee with an inactive status?
+    doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
+    
+    results = doc.css('employees').css("[status='inactive']").css('fullname').text
+    
+    assert_equal "Jerry Lewis", results
+  end
   
   #####################################################
   # these tests all reference josh_works_archive.html #
