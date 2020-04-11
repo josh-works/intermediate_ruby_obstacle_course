@@ -15,8 +15,7 @@ class NokogiriTest < MiniTest::Test
   def test_list_all_characters
     # list of all the characters in all the shows in this document
 
-    # Unless otherwise noted, every file we'll be reading is located
-    # within the /docs_to_parse directory. 
+    # every file we'll be reading is locate within the /docs_to_parse directory. 
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     
     results = doc.xpath('//character')
@@ -79,42 +78,47 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference parts.xml        #
   ##################################################
   def test_get_all_tires_belonging_to_aliceautoparts_using_xpath
-    # Get all the tires belonging to 'http://aliceautoparts.com/' using `xpath`
+    # using xpath, get tires with the XML namespace value `http://alicesautoparts.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
     results = doc.xpath('//xmlns:tire', xmlns: "http://alicesautoparts.com/")
     
     assert_equal 3, results.count
+    assert_includes results.map { |n| n.text }, "all weather"
+    assert_includes results.map { |n| n.text }, "studded"
+    assert_includes results.map { |n| n.text }, "extra wide"
   end
   
   def test_get_all_tires_belonging_to_bobsbikes_using_xpath
-    skip
-    # Get all the tires belonging to an `xmlns` value of `http://bobsbikes.com/` using `xpath`
+    # using xpath, get tires with the XML namespace value `http://bobsbikes.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.xpath('//')
+    results = doc.xpath('//id:tire', id: "http://bobsbikes.com/")
     
-    assert_equal 3, results.count
+    assert_equal 2, results.count
+    assert_includes results.map { |n| n.text }, "street"
+    assert_includes results.map { |n| n.text }, "mountain"
   end
   
   def test_get_tires_from_aliceautoparts_using_css
-    skip
-    # get the first set of tires (alices auto parts) using `css`
+    # using css, get first set of tires (alices auto parts)
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.xpath('//')
+    results = doc.css('xmlns|tire', xmlns: 'http://alicesautoparts.com/')
     
     assert_equal 3, results.count
+    assert_includes results.map { |n| n.text }, "all weather"
+    assert_includes results.map { |n| n.text }, "studded"
+    assert_includes results.map { |n| n.text }, "extra wide"
   end
   
   def test_get_just_names_of_tires_in_an_array
-    skip
     # get _just the names of the tires_ in an array
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     
-    results = doc.xpath('//')
-    
-    assert_equal 3, results.count
+    results = doc.css('xmlns|tire', xmlns: "http://alicesautoparts.com/").map { |n| n.text }
+    expected = ['all weather', 'studded', 'extra wide']
+    assert_equal results, expected
   end
   
   
