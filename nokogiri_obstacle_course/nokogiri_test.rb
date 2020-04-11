@@ -179,11 +179,80 @@ class NokogiriTest < MiniTest::Test
   
   #####################################################
   # these tests all reference josh_works_archive.html #
-  ##################################################### 
-  # - how many links are on the page?
-  # - using the `a` css selector, what is the `path` of the last link in the document?
-  # - Generate a list of all `href` attributes on the page
-  # - Generate an array of strings, representing every single `href` path on the page
-  # - Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. Don't include non-archive URLs. (should be 221 results long)
+  #####################################################
+  def test_total_link_count
+    # how many links are on the page?
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+    
+    results = doc.css('a')
+    
+    assert_equal 226, results.count
+  end
+  
+  def test_get_path_of_last_link
+    # using the `a` css selector, what is the `path` of the last link in the document?
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+    
+    result = doc.css('a').last.attributes["href"].value
+    
+    assert_equal '/three-ways-to-decide-what-to-be-when-you-grow-up', result
+  end
+  
+  def test_list_all_hrefs_on_page
+    # Generate a list of all `href` attributes on the page
+    # each attribute should be a Nokogiri::XML::Attr
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+
+    results = doc.css('a').map { |e| e.attribute('href') }
+    
+    # results should look like:
+    # [#(Attr:0x3fc00bcf596c { name = "href", value = "/" }),
+      #(Attr:0x3fc00bcf5930 { name = "href", value = "/about" }), 
+      #(Attr:0x3fc00bcf58f4 { name = "href", value = "/archive" }),
+      #(Attr:0x3fc00bcf58b8 { name = "href", value = "/turing" }),
+      #(Attr:0x3fc00bcf587c { name = "href", value = "/office-hours" }), etc
+    
+    assert_equal 226, results.count
+    assert_instance_of Nokogiri::XML::Attr, results.first
+  end
+  
+  def test_array_of_strings_of_every_path_on_page
+    # Generate an array of strings, representing every single `href` path on the page
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+    
+    results = doc.css('a').map {|n| n.attributes["href"].value }
+    
+    assert_equal 226, results.count
+    assert_includes results, "/three-ways-to-decide-what-to-be-when-you-grow-up"
+    assert_includes results, "/2018-review"
+    assert_includes results, "/troubleshooting-chinese-character-sets-in-mysql"
+    assert_includes results, "/test-rake-tasks-in-rails"
+    assert_includes results, "/finding-an-edge"
+    assert_includes results, "/developer-workflow"
+  end
+  
+  def test_get_path_for_first_link_that_has_sibling_element_of_time_class
+    # find the first link that has a `time` class associated with it.
+    # traverse the DOM from that time class to the associated URL
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+    
+    result = doc.css('time').first.parent.css('a').attribute('href').value
+    
+    assert_equal '/2019-review', result
+  end
+  
+  def test_list_all_paths_of_links_in_archive_portion_of_page
+    # Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. 
+    # Don't include non-archive URLs. (should be 221 results long)
+    doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
+    results = doc.css('time').map { |n| n.parent.css('a').attribute('href').value }
+    
+    assert_equal 221, results.count
+    refute_includes results, '/about'
+    refute_includes results, '/archive'
+    refute_includes results, '/office_hours'
+    assert_includes results, '/2019-review'
+    assert_includes results, '/block-value'
+  end
 
 end
