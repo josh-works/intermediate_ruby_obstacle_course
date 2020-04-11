@@ -12,7 +12,7 @@ class NokogiriTest < MiniTest::Test
   ##################################################
   #     these tests all reference shows.xml        #
   ##################################################
-  def test_shows_xml_lists_all_characters
+  def test_list_all_characters
     # Unless otherwise noted, every file we'll be reading is located
     # within the /docs_to_parse directory. 
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
@@ -28,7 +28,22 @@ class NokogiriTest < MiniTest::Test
     assert_equal "\"Howling Mad\" Murdock", results.last.text
   end
   
-  
+  def test_list_all_characters_in_drams
+    doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
+    
+    results = doc.xpath('//dramas//character')
+    
+    # Desired output:
+    # [#(Element:0x3fbfb649df58 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
+       #(Element:0x3fbfb7052c90 { name = "character", children = [ #(Text "Templeton \"Face\" Peck")] }),
+       #(Element:0x3fbfb64ec8b0 { name = "character", children = [ #(Text "\"B.A.\" Baracus")] }),
+       #(Element:0x3fbfb64f44d4 { name = "character", children = [ #(Text "\"Howling Mad\" Murdock")] })]
+    
+    assert_equal 4, results.count
+    assert_instance_of Nokogiri::XML::Element, results.first
+    assert_equal "John \"Hannibal\" Smith", results.first.text
+    assert_equal "\"Howling Mad\" Murdock", results.last.text
+  end
 
   # - list of all the characters in all the shows in this document
   # - Get the characters who performed in Dramas
