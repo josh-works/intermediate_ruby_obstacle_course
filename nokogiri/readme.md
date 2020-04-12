@@ -24,7 +24,11 @@ At same relative path as this `readme`, run:
 $ ruby nokogiri_test.rb
 ```
 
-You should see a bunch of skips. Unskip the first test, and make it pass. Work through this blog post as you work through each test; this readme and the test file go hand-in-hand.
+You should see a bunch of skips:
+
+![starting!](/images/scraping_18.jpg)
+
+Unskip the first test, and make it pass. Work through this blog post as you work through each test; this readme and the test file go hand-in-hand.
 
 For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistance.
 
