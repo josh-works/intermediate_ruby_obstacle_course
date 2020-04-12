@@ -9,19 +9,12 @@ To work through same exercises the Nokogiri docs give on [Searching a XML/HTML d
 Clone down this repo. 
 
 ```
-$ git clone <link to this repo>
-$ cd intermediate_ruby_obstacle_course
-```
-
-At same relative path as this `readme`, do
-
-```
+$ git clone git@github.com:josh-works/intermediate_ruby_obstacle_course.git
+$ cd intermediate_ruby_obstacle_courses/nokogiri
 $ gem install nokogiri
 ```
 
-~start a pry session~
-
-Just kidding. I converted all of my subsequent learnings to minitest assertions. In your terminal, make sure you've `cd`'ed to this folder, then run 
+At same relative path as this `readme`, run:
 
 ```
 $ ruby nokogiri_test.rb
@@ -29,7 +22,13 @@ $ ruby nokogiri_test.rb
 
 You should see a bunch of skips. Unskip the first test, and make it pass. 
 
-For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistence. 
+For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistance.
+
+_I wrote each test approximately as I discovered things and wrote the tests. Here's my notes from that process_
+
+# test_list_all_characters
+ 
+ These exercises are working through the examples here: [Basic Searching (nokogiri docs)](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#basic-searching)
 
 in the prompt:
 
@@ -50,22 +49,6 @@ require 'nokogiri'
 #    "<character>\"Howling Mad\" Murdock</character>"]
 ```
 
-OK, if you've gotten this far, you're ready to really benefit from, and practice, the examples in [Basic Searching](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#basic-searching)
-
-If you work through this document, and do the exercises, by the end you'll be able to complete the following challenges:
-
-### Check for understanding
-
-- easy: get a list of all the characters in all the shows in this document
-- hard: use css selectors to count the number of links in `josh_works_archive.html`
-
-- easy: You can use any XPath or CSS query you like (see the chapter on XPath and CSS syntax for more information).
-- hard: 
-
-- how to nicely print a NodeSet to your terminal so you can figure out the results you're looking at!
-
-# Use any XPath or CSS query you like (see the chapter on XPath and CSS syntax for more information) to get list of characters
-
 Desired outcome:
 
 ```
@@ -77,7 +60,10 @@ Desired outcome:
 
 ```
 
-[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="character" children=[#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=[#<Nokogiri::XML::Text:0x3fe36f07afd4 "\"B.A.\" Baracus">]>, #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>]
+[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=[#<Nokogiri::XML::Text:0
+x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="ch
+aracter" children=[#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=[#<Nokogiri::XML::Text:0x
+3fe36f07afd4 "\"B.A.\" Baracus">]>, #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>]
 
 ```
 
@@ -88,10 +74,14 @@ This is how it looked in Pry:
 Here's the above line, spaced out a bit better:
 
 ```
-[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, 
- #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="character" children=[#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, 
- #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=[#<Nokogiri::XML::Text:0x3fe36f07afd4 "\"B.A.\" Baracus">]>, 
- #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>
+[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=
+    [#<Nokogiri::XML::Text:0x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, 
+ #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="character" children=
+    [#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, 
+ #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=
+    [#<Nokogiri::XML::Text:0x3fe36f07afd4 "\"B.A.\" Baracus">]>, 
+ #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=
+    [#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>
 ]
 ```
 
@@ -110,7 +100,7 @@ puts @doc.xpath("//character")
 
 I messed with my `~/.pryrc`, cuz I'd had an ignored deprecation warnings for a while. 
 
-Looked through tons of Pry git issues...
+Looked through [tons of Pry git issues...](https://github.com/pry/pry/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 
 Finally, I got this output:
 
@@ -159,6 +149,8 @@ We can "grab" every single object with a `character` key:
 
 Done. My output looks slightly different than the Nokogiri docs, but that's OK with me.
 
+# test_list_all_characters_in_dramas
+
 > Get the 4 characters who performed in Dramas
 
 Desired output:
@@ -185,7 +177,10 @@ OK, this means we want to look in the "dramas" node? tree branch? xml-thing? and
 
 My output differs slightly from the output listed in the docs. I'm not sure why, but I'm going to keep moving forward!
 
-> Get the first drama name back in two different ways
+
+# test_get_first_drama_name_in_four_different_ways
+
+> Get the first drama name back in four different ways
 
 Desired result:
 
@@ -203,8 +198,9 @@ Desired result:
 
 ![using both "keys" in the xml doc](/images/scraping_05.jpg)
 
+# test_get_the_names_of_all_sitcoms
 
-### Question: get the names of all sitcoms
+> get the names of all sitcoms
 
 Desired output:
 
@@ -220,8 +216,9 @@ Using a CSS Selector!
 @doc.css('sitcom name')  # both of these work
 ```
 
+# test_get_all_tires_belonging_to_aliceautoparts_using_xpath
 
-# Now the tutorial jumps to using `parts.xml`
+ Now the tutorial jumps to using `parts.xml`
 
 In your terminal:
 
@@ -240,7 +237,10 @@ require 'nokogiri'
   children = [ # on and on and on
 ```
 
-### Challenge: Get all the tires belonging to 'http://aliceautoparts.com/'
+
+
+
+> Get all the tires belonging to 'http://aliceautoparts.com/'
 
 Intended result:
 
@@ -330,7 +330,9 @@ But beware a _tiny_ spelling error in the `xmlns` match value; if the string doe
 => []
 ```
 
-get the tires for `bobs bikes`, and `alices' autoparts`. 
+# test_get_all_tires_belonging_to_bobsbikes_using_xpath
+
+> get the tires for `bobs bikes`, and `alices' autoparts`. 
 
 ```ruby
 @doc.xpath("//xmlns:tire", 'xmlns' => "http://bobsbikes.com/")
@@ -342,9 +344,12 @@ get the tires for `bobs bikes`, and `alices' autoparts`.
 
 ![these are the xlmlns things](/images/scraping_07.jpg)
 
+
+# test_get_tires_from_aliceautoparts_using_css
+
 Now, lets translate this to CSS:
 
-### Question: get the first set of tires (alices auto parts) using css
+> get the first set of tires (alices auto parts) using css
 
 ```ruby
 @doc.css("xmlns|tire", "xmlns" => "http://alicesautoparts.com/")
@@ -353,7 +358,9 @@ Now, lets translate this to CSS:
 @doc.css("xmlns|tire", xmlns: "http://alicesautoparts.com/")
 ```
 
-### Question: get _just the names of the tires_ in an array
+# test_get_just_names_of_tires_in_an_array
+
+>  Question: get _just the names of the tires_ in an array
 
 Desired output:
 
@@ -362,10 +369,9 @@ Desired output:
 => ["all weather", "studded", "extra wide"]
 ```
 
-# atom.xml examples
+# test_get_all_titles_using_xpath
 
 Jump over to another pry session. this time we're using `atom.xml`:
-
 
 ```
 $ pry
@@ -380,7 +386,7 @@ load up `nokogiri` and the file:
 # lots of output
 ```
 
-### Question: Grab all title tags
+> Grab all title tags
 
 
 Here's the title tags we want in the xml:
@@ -462,14 +468,15 @@ Turns out the page has been moved without a redirect to:
 [https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html](https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html)
 
 
-# Employees.xml examples
+
+# test_full_name_last_employee
 
 ```ruby
 # from new pry session
 require 'nokogiri'
 ```
 
-This is originally discussed under the concept of "slop", because there's a `Nokogiri` mode called "slop", which the docs say over and over is a bad idea to use. So, instead of using the "sloppy" examples, we'll just work through the examples with regular non-sloppy `Nokogiri#css` selectors. 
+This is originally [discussed under the concept of "slop"](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#slop-1), because there's a `Nokogiri` mode called "slop", which the docs say over and over is a bad idea to use. So, instead of using the "sloppy" examples, we'll just work through the examples with regular non-sloppy `Nokogiri#css` selectors. 
 
 ### Question: Get the full name of the last employee
 
@@ -488,16 +495,17 @@ This is the first time I've chained `.css` onto itself:
 
 ![double css what does it mean](/images/scraping_09.jpg)
 
+# test_status_first_employee
 
-
-### Question: what is the first employee status?
+> what is the first employee status?
 
 ```ruby
 @doc.css('employee').first['status']
 => "active"
 ```
+# test_name_of_inactive_employee
 
-###  Question: What is the name of the employee with an inactive status?
+>  question: What is the name of the employee with an inactive status?
 
 ```ruby
 @doc.css("[status='inactive']").css('fullname').text
@@ -507,8 +515,9 @@ I don't know why this selector requires the brackets around `status='inactive'`
 
 OK. This concludes our exercises that arise from [Searching an XML/HTML document (Nokogiri docs)](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces)
 
+# test_total_link_count
 
-# OK! Jump in complexity time! 750 lines of HTML
+ OK! Jump in complexity time! 750 lines of HTML
 
 The training wheels are coming off, but we're still working will well-bounded data. 
 
@@ -543,7 +552,7 @@ require 'nokogiri'
 @doc = Nokogiri::HTML(File.open("docs_to_parse/josh_works_archive.html"))
 ```
 
-### Question: How many links are on the page?
+> how many links are on the page?
 
 I define `link` as `a href="..."`
 
@@ -553,8 +562,9 @@ I define `link` as `a href="..."`
 @doc.css("a").count
 => 226
 ```
+# test_list_all_hrefs_on_page
 
-### Question: how many posts are listed in the archive? 
+> how many posts are listed in the archive? 
 
 ![just the archives](/images/scraping_12.jpg)
 
@@ -665,6 +675,8 @@ Lets try gathering JUST this URL. I'm going to work on the last link here:
 
 Lets get the path value out of this. (`/three-ways-to-decide-what-to-be-when-you-grow-up`)
 
+# test_list_all_hrefs_on_page
+
 We can see that what we want is in the `attributes` value - `attributes = [{"href" => {}}]`.
 
 ```ruby
@@ -738,6 +750,8 @@ but all of these options _did_ work:
 
 I have no good mental model of this kind of thing that makes me nod and say "ah, that makes sense", but I expect more will become clear in time.
 
+# test_get_path_for_first_link_that_has_sibling_element_of_time_class
+
 ### Question: Grabbing the last `time` html element, "jump" to the associated URL path.
 
 
@@ -771,6 +785,8 @@ I found `#attribute` in the list of methods, it expected an argument, so I passe
 ```
 
 This is the first time we've had to make much use of the `parent` method; it jumps "up" a level of the node tree, and then we use the `css` method to search the css of the node.
+
+# test_list_all_paths_of_links_in_archive_portion_of_page
 
 ### Question: Generate a list of all `href` attributes on the page
 

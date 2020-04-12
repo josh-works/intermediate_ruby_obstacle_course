@@ -30,7 +30,7 @@ class NokogiriTest < MiniTest::Test
     assert_equal "\"Howling Mad\" Murdock", results.last.text
   end
   
-  def test_list_all_characters_in_drams
+  def test_list_all_characters_in_dramas
     skip
     # Get the characters who performed in Dramas
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
