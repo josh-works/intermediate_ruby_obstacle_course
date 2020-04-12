@@ -3,6 +3,10 @@ _This repo exists because I worked through [THE BEGINNER’S GUIDE: Scraping in 
 _This collection of exercises will *quickly* get you comfortable enough in nokogiri to do fascinating things quickly using it_
 
 
+_Questions or comments? hit me up in Turing's slack (`@josh_t`), open a git issue, etc._
+
+
+I can add explanation later.
 
 To work through same exercises the Nokogiri docs give on [Searching a XML/HTML document](https://nokogiri.org/tutorials/searching_a_xml_html_document.html)
 
@@ -20,7 +24,7 @@ At same relative path as this `readme`, run:
 $ ruby nokogiri_test.rb
 ```
 
-You should see a bunch of skips. Unskip the first test, and make it pass. 
+You should see a bunch of skips. Unskip the first test, and make it pass. Work through this blog post as you work through each test; this readme and the test file go hand-in-hand.
 
 For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistance.
 
@@ -819,6 +823,7 @@ As you might imagine, this is similar to the above question:
  # etc
 ```
 
+# test_array_of_strings_of_every_path_on_page
 
 ### Generate a list of paths, but restricting the results to the `archives`  section of the page
 
@@ -878,37 +883,34 @@ And this gives us 221 results.
 
 
 
+By the end of this set of exercises, you will be able to comfortably use Nokogiri to do the following:
 
-# Condensed set of questions you should be able to answer FROM THE BEGINNING in less than 8 minutes:
-
-
-### shows.xml
-
+referencing `shows.xml`:
 - list of all the characters in all the shows in this document
 - Get the characters who performed in Dramas
 - Get the first drama name back in _four_ different ways
 - get the names of sitcoms
 
-### parts.xml
+referencing `parts.xml`
 
 - Get all the tires belonging to 'http://aliceautoparts.com/' using `xpath`
 - Get all the tires belonging to an `xmlns` value of `http://bobsbikes.com/` using `xpath`
 - get the first set of tires (alices auto parts) using `css`
 - get _just the names of the tires_ in an array
 
-### atom.xml
+referencing `atom.xml`
 
 - get all titles using `xpath`
 - get all titles using `css`
 
 
-### employees.xml
+referencing `employees.xml`
 
 - get the full name of the last employee
 - what is the first employee status?
 - What is the name of the employee with an inactive status?
 
-### josh_works_archive.html
+referencing `josh_works_archive.html`
 
 - how many links are on the page?
 - using the `a` css selector, what is the `path` of the last link in the document?
@@ -917,12 +919,13 @@ And this gives us 221 results.
  - Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. Don't include non-archive URLs. (should be 221 results long)
 
 
-## TODO 
+#### TODOs for josh
 
 - notify [@tenderlove](https://twitter.com/tenderlove) of broken redirect from [https://nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#namespaces) to [https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html](https://tenderlovemaking.com/2009/04/23/namespaces-in-xml.html)
 
-## Resources
+#### Misc Resources
 
 - [CSS Selector Reference (W3 schools)](https://www.w3schools.com/cssref/css_selectors.asp)
 - [Child and Sibling Selectors (CSS Tricks)](https://css-tricks.com/child-and-sibling-selectors/)
 - [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet (Medium.com/@LindaVivah)](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c)
+
