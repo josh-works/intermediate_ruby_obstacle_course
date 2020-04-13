@@ -275,4 +275,9 @@ class NokogiriTest < MiniTest::Test
     assert_includes results, '/block-value'
   end
 
+  # using hn_jobs_thread
+  def test_finds_first_comment
+    # doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
+    
+  end
 end

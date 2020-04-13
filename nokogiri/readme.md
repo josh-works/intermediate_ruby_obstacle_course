@@ -887,7 +887,273 @@ And this gives us 221 results.
 
 
 
-By the end of this set of exercises, you will be able to comfortably use Nokogiri to do the following:
+### scraping "ask HN" thread to get list of personal blogs to visit
+
+now I'm ready for the thing I wanted to do, that sent me on this whole rabbit trail in the first place.
+
+I recently read [Ask HN: What is your blog and why should I read it?](https://news.ycombinator.com/item?id=22800136).
+
+I thought it would be cool to build a little rails app that scrapes this thread for blog posts, and every time you visit it, it give you a few of those posts. Sort of a very "bespoke" curated content finding and discovery service. 
+
+I know how to do most of this... from the database on up. How to _get_ the data in the database, I was less sure of. 
+
+I figured I'd write a ruby script that would grab this post's html, use nokogiri to find all the URLs, do some validation/deduplication, and stuff them in a database. 
+
+Then I'd render some sampling of that DB content to the front end. 
+
+> using `hn_blog_posts.html`
+
+That was then I googled around for basic Nokogiri practice, and couldn't find anything that got me up and running quickly enough to make intelligent guesses on building this out. 
+
+And here we are...
+
+Anyway, lets try to find this link!
+
+![finding_links](/images/scraping_19.jpg)
+
+Hop into a pry session, and we'll download the webpage and figure this out
+```
+$ pry
+> require 'nokogiri'
+> require 'open-uri'
+> doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
+```
+
+Poking around the HTML of the hacker news page, it looks like all the comments are in a `span` with the exact same class name:
+
+![span and same class](/images/scraping_20.jpg)
+
+```ruby
+
+# difference between: 
+doc.children
+doc.children.count
+doc.children.class
+doc.children.first.to_a
+doc.children.first
+doc.css('span')
+doc.css('.comment-tree')
+doc.css('.comment-tree')
+doc.css('.comment-tree')
+doc.css('.comment-tree').css('tr')
+doc.css('.comment-tree').css('tr').first
+doc.css('.comment-tree').css('tr').first.class
+```
+
+
+Took a bunch of false starts to figure out exactly what to call. 
+
+
+unwanted comment xpath (right-click 'copy as xpath')
+
+`/html/body/center/table/tbody/tr[3]/td/table[2]/tbody/tr[2]/td/table/tbody/tr/td[3]/div[2]/span`
+
+:scream: this isn't helpful. 
+
+```ruby
+comment.css('a').map { |n| n.text }
+=> ["https://paulstamatiou.com/",
+ "https://paulstamatiou.com/getting-started-with-security-keys...",
+ "https://paulstamatiou.com/building-a-windows-10-lightroom-ph...",
+ "https://paulstamatiou.com/stuff-i-use/"]
+```
+
+not what we want.
+
+Getting closer, but still not quite. I ended up getting the truncated URLs
+
+![truncated urls](/images/scraping_21.jpg)
+
+
+```ruby
+doc.css('.commtext')
+doc.css('.commtext').first
+
+commment = _ # setting comment equal to a single commtext instance, so I can save typing
+
+comment.css('a').attribute("href").value
+doc.css('.commtext').first.css('a').attribute("href").value
+
+doc.css('.commtext').map do  |comment| 
+  comment.css('a').map do |a|
+    a.attribute('href').value
+  end
+end
+# HOLY COW IT DID SOMETHING!
+```
+
+![it's alive!!!](/images/scraping_22.jpg)
+
+Scratches head.... now what? Do I want threads only in top-level comments? 
+
+Lets just start there. Seems like a reasonable design criteria. 
+
+First, I found a unique string that I knew couldn't be in a top-level comment. I needed to make this grab only top-level comments.
+
+Maybe all children comments have a different parent than top-level comments?
+
+if top-level comments have a parent of a `tr` or something, and all other comments have a parent of a `span`, we might be in business. 
+
+```ruby
+doc.css('.commtext') # array of comments
+doc.css('.commtext').first.parent.name
+=> "div" # top level comment has a div for a parent
+doc.css('.commtext').first.name
+=> "span" # cop level comment IS a span
+doc.css('.commtext').first.child.name
+=> "a"
+doc.css('.commtext').first.children.map {|n| n.parent.name }
+# looking through all children, making sure none have a div for parent.name
+=> ["span", "span", "span", "span", "span"]
+```
+
+off to the docs. I think I can understand them now!
+
+Here's a big list of all selectors you may be able to use: [https://www.w3.org/TR/selectors-3/#selectors](https://www.w3.org/TR/selectors-3/#selectors)
+
+And scoping the above list down to [attribute selectors](https://www.w3.org/TR/selectors-3/#attribute-selectors)
+
+I have no idea how to read these docs right now. Pretty much everything on this docs page means nothing to me:
+
+![huh?](/images/scraping_23.jpg)
+
+Lets make examples out of all this:
+
+Lets look at each row, and break each section down into something intelligble to me:
+
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `*` |	any element	| Universal selector |	2 |
+
+`pattern: *`
+
+This `pattern` value is the selector that can be passed into a Nokogiri selector. For example:
+
+```ruby
+doc.css('*')
+
+```
+
+`Represents: any element`
+
+Sounds like this can represent any element? 
+
+`Description: Universal Selector`
+
+Describes everything? the universe? [ww3.org "universal selectors" docs](https://www.w3.org/TR/selectors-3/#universal-selector)
+
+`Level: 2`
+
+No clue. Googled `css selector levels` and got [Selectors from level 4 to 1](https://css4-selectors.com/selectors/).
+
+I think this is a "precedence" thing - level 1 selectors will out-compete level 2 selectors, or something like that.
+
+If you worked together both a level 1 and level 2 selector, I could see level 2 perhaps not showing up because level 1 "beats" it, or something. I'll figure this out as we go. 
+
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `E` |	any element of type `E`	| Type selector |	1 |
+
+The `pattern` value can represent any HTML element:
+
+```ruby
+doc.css('div')
+doc.css('p')
+doc.css('a')
+doc.css('table')
+```
+
+`Description: Type selector`
+
+[link to type selector in docs](https://www.w3.org/TR/selectors-3/#type-selectors).
+
+
+Third row:
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `E[foo]` |	an E element with a "foo" attribute	| Attribute selector |	2 |
+
+We're starting to get into some good stuff, I think. 
+
+So, we know what `E element` means - `div`, `span`, `a`, etc.
+
+What does `attribute` mean? 
+
+> an `E` element with `foo` attribute: `E[foo]`
+
+Lets make an example. Googled around, this is from [HTML Attribute (Wikipedia)](https://en.wikipedia.org/wiki/HTML_attribute)
+
+> HTML attributes generally appear as name-value pairs, separated by =, and are written within the start tag of an element, after the element's name: 
+
+```html
+<element attribute="value">element content</element>
+```
+
+Lets find some real world examples, and try to build a mental model from it:
+
+Opening up the network tab for that wikipedia page, and inspecting the HTML from this very example:
+
+![example attributes](/images/scraping_24.jpg)
+
+Another example, from the HN page we're working to process:
+
+![grabbing html attributes](/images/scraping_25.jpg)
+
+We can see some interesting progressions here:
+
+```ruby
+# using the nokogiri-parsed version of the hacker news thread
+doc.css('a').count
+=> 1600
+doc.css('a[href]').count
+=> 1600
+doc.css('a[href="https://paulstamatiou.com/"]').count
+=> 1
+```
+
+Lets get some more practice.
+
+Jumping over to [Learn Enough Command Line to Be Dangerous](https://www.learnenough.com/command-line-tutorial/basics), lets try to grab the links in the first "aside" box, per this screenshot:
+
+![grab just these links](/images/scraping_26.jpg)
+
+```ruby
+# open a new pry session: $ pry
+require 'nokogiri'
+require 'open-uri'
+doc = Nokogiri::HTML(open('https://www.learnenough.com/command-line-tutorial/basics'))
+doc.css('div') # we know this will grab all the divs on the page. not helpful.
+doc.css('div').count 
+=> 133
+doc.css('div[id]') # this will grab all the divs WITH AN ID ATTRIBUTE!
+doc.css('div[id]').count
+=> 21
+doc.css('div[id="aside-computer_magic"]') # this should grab the div from the above screenshot!
+=> [] # but it totally doesn't work. :(
+```
+
+wow. Really struggling to get this to work. I can do this on my website:
+
+```ruby
+@jw = Nokogiri::HTML(open("https://josh.works/"))
+@jw.css('h2[id="programming"]')
+=> [(Element:0x3fe16f513e80 {
+   name = "h2",
+   attributes = [ (Attr:0x3fe16f513534 { name = "id", value = "programming" })],
+   children = [ (Text "Programming")]
+   })]
+```
+
+
+
+
+
+
+
+### By the end of this set of exercises, you will be able to comfortably use Nokogiri to do the following:
 
 referencing `shows.xml`:
 - list of all the characters in all the shows in this document
@@ -920,8 +1186,11 @@ referencing `josh_works_archive.html`
 - using the `a` css selector, what is the `path` of the last link in the document?
 - Generate a list of all `href` attributes on the page
 - Generate an array of strings, representing every single `href` path on the page
- - Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. Don't include non-archive URLs. (should be 221 results long)
+- Generate array of relative_paths, representing all `href`s in the ARCHIVE portion of the page. Don't include non-archive URLs. (should be 221 results long)
 
+referencing `hn_blog_posts.html`:
+
+- 
 
 #### TODOs for josh
 
@@ -932,4 +1201,5 @@ referencing `josh_works_archive.html`
 - [CSS Selector Reference (W3 schools)](https://www.w3schools.com/cssref/css_selectors.asp)
 - [Child and Sibling Selectors (CSS Tricks)](https://css-tricks.com/child-and-sibling-selectors/)
 - [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet (Medium.com/@LindaVivah)](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c)
-
+- [CSS Selectors from level 4 to 1](https://css4-selectors.com/selectors/)
+- [Intriguing CSS Level 4 Selectors](https://webdesign.tutsplus.com/tutorials/intriguing-css-level-4-selectors--cms-29499)
