@@ -1146,8 +1146,100 @@ wow. Really struggling to get this to work. I can do this on my website:
    children = [ (Text "Programming")]
    })]
 ```
+OK, this works:
+
+```ruby
+@hartl = Nokogiri::HTML(open("https://www.learnenough.com/command-line-tutorial/basics"))
+@hartl.css('strong[class="book-author-name"]')
+```
+Ah. The reason the nokogiri selector wasn't working to try to grab the links we wanted was because that bit of HTML wasn't included when we tried to open the URL:
+
+```shell
+$ curl -L https://www.learnenough.com/command-line-tutorial/basics -o hartl.html
+$ open hartl.html
+```
+
+Take a look at that HTML doc; doesn't include the elements we wanted to play with. 
+
+Phew. What a relief! 
+
+Lets try a different page, maybe one where the entire expected HTML doc comes back in a single request.
+
+I've recently been reading [https://commoncog.com/blog/](https://commoncog.com/blog/), and have found it to be _exceptional_. 10x better than pretty much anything I've found on the internet. And it came from the `ask hn: what's your personal blog and why should I read it` thread. 
+
+We're going to try to get these links:
+
+![lets get this](/images/scraping_27.jpg)
+
+```ruby
+# new pry session
+require 'nokogiri'
+require 'open-uri'
+doc = Nokogiri::HTML(open("https://commoncog.com/blog/"))
+```
+
+Now, look at this screenshot again. Can we figure out something true about these links we want?
+
+```ruby
+doc.css('li[class="sidebar__nav__li"]')
+# boom! works!
+```
+
+This returns a `Nokogiri::XML::NodeSet` containing the nodes we want; we have to filter out the info we want.  
+
+Here's the first pass at building up the query. Note that I use `.first` to translate from methods called on the collection to methods called on the instance. I'll translate this to `.map` in the next step:
+
+```ruby
+doc.css('.sidebar__nav__li').first.css('a').attribute('href').value
+=> "http://commoncog.com/blog/about/"
+
+# got what I wanted from a single instance of that NodeSet. Now to iterate through all of them:
+
+doc.css('.sidebar__nav__li').map { |n| n.css('a').attribute('href').value }
+=> ["http://commoncog.com/blog/about/",
+ "http://commoncog.com/blog/career-moats-101/",
+ "http://commoncog.com/blog/subscribe-to-the-commonplace-newsletter/",
+ "http://commoncog.com/blog/a-framework-for-putting-mental-models-to-practice/",
+ "http://commoncog.com/blog/the-principles-sequence/",
+ "http://commoncog.com/blog/the-forecasting-series/",
+ "http://commoncog.com/blog/the-chinese-businessman-paradox/",
+ "http://commoncog.com/blog/the-ultimate-guide-to-reading-a-book-a-week-for-your-career/",
+ "https://commoncog.com/",
+ "http://commoncog.com/blog/about/",
+ "http://commoncog.com/blog/career-moats-101/",
+ "http://commoncog.com/blog/subscribe-to-the-commonplace-newsletter/",
+ "http://commoncog.com/blog/a-framework-for-putting-mental-models-to-practice/",
+ "http://commoncog.com/blog/the-principles-sequence/",
+ "http://commoncog.com/blog/the-forecasting-series/",
+ "http://commoncog.com/blog/the-chinese-businessman-paradox/",
+ "http://commoncog.com/blog/the-ultimate-guide-to-reading-a-book-a-week-for-your-career/",
+ "https://commoncog.com/"]
+```
+And, how might be go about grabbing all the links on the page? quick check-for-understanding?
+
+```ruby
+doc.css('a').map { |n| n.attribute('href').value }
+=> ["http://commoncog.com/blog",
+ "#subscribe",
+ "/blog/watch-the-cash-flow/",
+ "/blog/watch-the-cash-flow/",
+ "/blog/career-moats-in-recession/",
+ # etc
+```
+
+So, I'd say we've now experimented a bit with these selectors:
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `E[foo]` |	an E element with a "foo" attribute	| Attribute selector |	2 |
+| `E[foo="bar"]` |an `E` element whose "foo" attribute value is exactly equal to "bar" | Attribute Selector | 2 |
 
 
+Lets try:
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `E[foo~="bar"]` |	an E element whose "foo" attribute value is a list of whitespace-separated values, one of which is exactly equal to "bar" | Attribute Selector | 2 |
 
 
 
