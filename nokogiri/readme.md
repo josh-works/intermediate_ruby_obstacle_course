@@ -1241,6 +1241,117 @@ Lets try:
 |---------|------------|--------------|-------|
 | `E[foo~="bar"]` |	an E element whose "foo" attribute value is a list of whitespace-separated values, one of which is exactly equal to "bar" | Attribute Selector | 2 |
 
+Lets find some examples where something like this could be useful. 
+
+Back to the hacker news page:
+
+Lets get this:
+
+![c00](/images/scraping_28.jpg)
+
+As a reminder, we can easily grab all the elements with a class of `commtext` without difficulty:
+
+```ruby
+doc.css('.commtext').count
+=> 250
+```
+
+But what if we call for `c00`?
+
+```ruby
+hn.css('.c00').count
+=> 250
+```
+
+Now, lets use the element selector piece:
+
+```ruby
+doc.css('span[class="commtext"]').count
+=> 0 # huh? we know there's 250 spans with this class\
+doc.css('span[class~=commtext]').count
+=> 250 # nailed it. The class didn't `exactly equal` commtext, the class had a list of 
+# whitespace-separated values, one of which is exactly equal to commtext. 
+# we should expect this to work with the other class given to this span:
+doc.css('span[class~=c00]').count
+```
+
+# Structural pseudo-classes
+
+OK, I'm going to skip down the list of selectors a bit. Here's how much of the [selectors summary](https://www.w3.org/TR/selectors-3/#selectors) we've worked through:
+
+![summary](/scraping_29.jpg)
+
+All of the selectors that reference [Structural pseudo-classes](https://www.w3.org/TR/selectors-3/#structural-pseudos) seem interesting, so lets figure them out!
+
+The first question that I had was:
+
+> What the heck is a structural pseudo-class?
+
+The definition is:
+
+> Selectors introduces the concept of *structural pseudo-classes* to permit selection based on extra information that lies in the document tree but cannot be represented by other simple selectors or combinators.
+
+This still doesn't help. I googled `structural pseudo-classes examples`
+
+Ended up on [Getting to Know CSS3 Selectors: Structural Pseudo-Classes (Sitepoint)](https://www.sitepoint.com/getting-to-know-css3-selectors-structural-pseudo-classes/)
+
+OK, syntax for using the `root` pseudo-class:
+
+```ruby
+doc.css(':root')
+=> # returns a giant object that looks suspiciously similar to `doc`
+```
+I'm not seeing much utility here. Other examples that gave results:
+
+```ruby
+doc.css('html:root') # returned something
+doc.css('table:root') # returned nothing
+doc.css('span:root') # returned nothing
+doc.css('div:root') # returned nothing
+doc.css('p:root') # returned nothing
+doc.css('body:root') # returned nothing
+```
+
+oh well.
+
+On to the next row:
+
+| Pattern |	Represents |	Description |	Level |
+|---------|------------|--------------|-------|
+| `E:nth-child(n)` |	an E element, the n-th child of its parent | Structural pseudo-classes | 3 |
+
+OK. Now lets look at `:only-child`
+
+```ruby
+doc.css(':only-child').count
+=> 3523
+```
+
+Presumably this is the count of all elements that are the only child of their parent element. They likely have no sibling nodes.
+
+------------------------------
+
+Feels like a waste of time. Back to the hacker news jobs thread
+
+```ruby
+doc.css('table[class="comment-tree"]').css('tr')
+doc.css('table[class="comment-tree"]').first.css('.comment').first
+doc.css('table[class="comment-tree"]').map { |n| n.css('.comment').first }
+doc.css('table[class="comment-tree"]').first.css('.comment').first.css('a').to_a.first.text
+doc.css('table[class="comment-tree"]').map {|n| n.css('.comment').map {|c| c.css('a').map {|a| a.text } } }
+```
+
+This last one seems pretty close to what I want. 
+
+```ruby
+doc.css('table[class="comment-tree"] > tr').first.css('p')
+doc.css('table[class="comment-tree"] > tr').first.css('p').css('a').first.attribute('href').value
+doc.css('table[class="comment-tree"] > tr').first.css('p').css('a').map {|a| a.attribute('href').value }
+doc.css('table[class="comment-tree"] > tr').map { |c| c.css('p').css('a').map {|a| a.attribute('href').value } }
+# very close. Gets many unwanted "reply" links, though. 
+```
+
+
 
 
 
