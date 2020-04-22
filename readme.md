@@ -2,7 +2,7 @@
 
 This repo contains a collection of "obstacle courses" that are laser-focused on _quickly_ leveling up very discrete skills.
 
-I'm building these resources to help myself learn (slowly) and then to be able to hand this resource to someone else, and in a fraction of the time it took me to learn this, I want them to be able to learn ~60% of what I've learned.
+I'm building these resources to help myself learn (slowly) and then to be able to hand this resource to someone else, and in a _fraction_ of the time it took me to learn this, I want them to be able to learn >60% of what I've learned.
 
 ## Nokogiri Obstacle Course
 
