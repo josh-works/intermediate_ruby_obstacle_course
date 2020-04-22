@@ -13,12 +13,10 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference shows.xml        #
   ##################################################
   def test_list_all_characters
-    skip
     # list of all the characters in all the shows in this document
 
     # every file we'll be reading is locate within the /docs_to_parse directory. 
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
-    
     # results = doc.xpath('//character')
     # remember, use pry in here to inspect your results. Use 
     # the #to_a method to easily see in your terminal what sort of 

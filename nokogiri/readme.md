@@ -28,6 +28,15 @@ You should see a bunch of skips:
 
 ![starting!](/images/scraping_18.jpg)
 
+Next, open up your "workspace". This will be the nokogiri test file, and the document we're working on, both easily visible so you can see what you're working on:
+
+Here's how I would recommend "setting up" these exercises:
+1. Make sure you can easily see in your editor the document we're working on parsing
+2. Make sure you can easily see the _huge_ output that you'll be getting in Pry as practicing/figuring this all out.
+
+![ready to work through exercises](/images/scraping_30.jpg)
+
+
 Unskip the first test, and make it pass. Work through this blog post as you work through each test; this readme and the test file go hand-in-hand.
 
 For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistance.
