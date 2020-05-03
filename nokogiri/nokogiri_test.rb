@@ -151,29 +151,27 @@ class NokogiriTest < MiniTest::Test
   #   these tests all reference employees.xml      #
   ##################################################
   def test_full_name_last_employee
-    skip
     # get the full name of the last employee
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
 
+    results = doc.css('employee fullname').last.text
 
     assert_equal "Jerry Lewis", results
   end
 
   def test_status_first_employee
-    skip
     # what is the first employee status?
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
 
-
+    results = doc.css('employee').first['status']
     assert_equal "active", results
   end
 
   def test_name_of_inactive_employee
-    skip
     # What is the name of the employee with an inactive status?
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
 
-
+    results = doc.css("[status='inactive']").css('fullname').text
     assert_equal "Jerry Lewis", results
   end
 
