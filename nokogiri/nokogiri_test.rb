@@ -281,9 +281,22 @@ class NokogiriTest < MiniTest::Test
   #####################################################
   require 'open-uri'
 
-  # using hn_jobs_thread create an array of all blog links in the comments
   def test_finds_first_comment
-    doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
+    # skip
+    # doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
+
+    # result = your code here
+
+    assert_instance_of Nokogiri::XML::Element, result
+    assert_equal "comment", result.attributes['class'].value
+    assert_equal 4, result.children.css('a[href]').count
+
+  end
+
+  # using hn_jobs_thread create an array of all links in the comments
+  def test_finds_first_links_in_comments
+    skip
+    # doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
 
     # results = your code here
 
