@@ -276,4 +276,30 @@ class NokogiriTest < MiniTest::Test
     assert_includes results, '/block-value'
   end
 
+  #####################################################
+  #       time to scrape the web with Nokogiri        #
+  #####################################################
+  require 'open-uri'
+
+  # using hn_jobs_thread create an array of all blog links in the comments
+  def test_finds_first_comment
+    doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
+
+    # results = your code here
+
+    first_links = [
+      "https://paulstamatiou.com/",
+      "https://paulstamatiou.com/getting-started-with-security-keys/",
+      "https://paulstamatiou.com/building-a-windows-10-lightroom-photo-editing-pc/",
+      "https://paulstamatiou.com/stuff-i-use/",
+      "https://paulstamatiou.com/about-this-website/",
+      "https://tkainrad.dev",
+      "https://tkainrad.dev/posts/managing-my-personal-knowledge-base/",
+      "https://tkainrad.dev/posts/setting-up-linux-workstation/",
+      "https://tkainrad.dev/posts/using-hugo-gitlab-pages-and-cloudflare-to-create-and-run-this-website/"
+    ]
+
+    assert_instance_of Array, results
+    assert_equal first_links, results[0..8]
+  end
 end
