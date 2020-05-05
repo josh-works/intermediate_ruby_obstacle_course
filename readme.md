@@ -39,3 +39,6 @@ So, change into the `nokogiri` directory and work through the readme!
 └── readme.md      <-------- you are here
 ```
 
+------------------
+
+Many thanks to [Mark Modak](https://github.com/markevan100/) and [Alice Post](https://github.com/ap2322) for their testing and contributions!
