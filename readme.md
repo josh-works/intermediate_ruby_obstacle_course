@@ -4,21 +4,34 @@ This repo contains a collection of "obstacle courses" that are laser-focused on 
 
 I'm building these resources to help myself learn (slowly) and then to be able to hand this resource to someone else, and in a _fraction_ of the time it took me to learn this, I want them to be able to learn >60% of what I've learned.
 
+### Current "obstacle courses"
+
+- Nokogiri Obstacle Course
+- Rubocop Obstacle Course
+
+------------------------------------
+
 ## Nokogiri Obstacle Course
 
-"Become a better developer" isn't super actionable.
+> Become a better developer
 
-On the flip side:
+isn't super actionable.
 
-> Get good at quickly using CSS selectors in Nokogiri to scrape a webpage
+On the flip side
 
-Is actionable, and has the side effect of helping you get better at writing integration tests that use css-selector-based assertions.
+> Write good tests for your views
+
+is actionable, and has the side effect of helping you get better at writing integration tests that use css-selector-based assertions.
+
+To test your views, you need to understand the basics of parsing the DOM. To do this, you need to use a tool called `nokogiri`.
+
+Beyond testing views, you can also use nokogiri to scrape websites.
 
 Before I started this Nokogiri project, I said to myself:
 
 > Hey, I kinda know how to use Nokogiri...
 
-And could kinda-sorta stumble my way through some webscraping, but I couldn't do anything complicated with it, and didn't feel confident that I could sit down and scrape arbitrary data from an arbitrary webpage.
+And could kinda-sorta stumble my way through some web scraping, but I couldn't do anything complicated with it, and didn't feel confident that I could sit down and scrape arbitrary data from an arbitrary webpage.
 
 So, change into the `nokogiri` directory and work through the readme!
 
@@ -41,4 +54,4 @@ So, change into the `nokogiri` directory and work through the readme!
 
 ------------------
 
-Many thanks to [Mark Modak](https://github.com/markevan100/) and [Alice Post](https://github.com/ap2322) for their testing and contributions!
+Many thanks to [Mark Modak](https://github.com/markevan100/), [Alice Post](https://github.com/ap2322), and [Daniel Frampton](https://github.com/DanielEFrampton) for their testing and contributions!
