@@ -294,7 +294,7 @@ class NokogiriTest < MiniTest::Test
   require 'open-uri'
 
   def test_finds_first_comment
-    # skip
+    skip
     # doc = Nokogiri::HTML(open("https://news.ycombinator.com/item?id=22800136"))
 
     # result = your code here

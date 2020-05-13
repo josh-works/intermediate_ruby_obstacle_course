@@ -15,7 +15,7 @@ Clone down this repo.
 ```
 $ git clone git@github.com:josh-works/intermediate_ruby_obstacle_course.git
 $ cd intermediate_ruby_obstacle_courses/nokogiri
-$ gem install nokogiri
+$ bundle install
 ```
 
 At same relative path as this `readme`, run:
