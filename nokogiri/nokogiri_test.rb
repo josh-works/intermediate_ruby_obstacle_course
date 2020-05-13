@@ -40,10 +40,10 @@ class NokogiriTest < MiniTest::Test
     # results = doc.xpath('//dramas//character')
 
     # Desired output:
-    # [#(Element:0x3fbfb649df58 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
-       #(Element:0x3fbfb7052c90 { name = "character", children = [ #(Text "Templeton \"Face\" Peck")] }),
-       #(Element:0x3fbfb64ec8b0 { name = "character", children = [ #(Text "\"B.A.\" Baracus")] }),
-       #(Element:0x3fbfb64f44d4 { name = "character", children = [ #(Text "\"Howling Mad\" Murdock")] })]
+    # [(Element:0x3fbfb649df58 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
+    #  (Element:0x3fbfb7052c90 { name = "character", children = [ #(Text "Templeton \"Face\" Peck")] }),
+    #  (Element:0x3fbfb64ec8b0 { name = "character", children = [ #(Text "\"B.A.\" Baracus")] }),
+    #  (Element:0x3fbfb64f44d4 { name = "character", children = [ #(Text "\"Howling Mad\" Murdock")] })]
 
     assert_equal 4, results.count
     assert_instance_of Nokogiri::XML::Element, results.first
@@ -235,11 +235,11 @@ class NokogiriTest < MiniTest::Test
     # results = your code here
 
     # results should look like:
-    # [#(Attr:0x3fc00bcf596c { name = "href", value = "/" }),
-      #(Attr:0x3fc00bcf5930 { name = "href", value = "/about" }),
-      #(Attr:0x3fc00bcf58f4 { name = "href", value = "/archive" }),
-      #(Attr:0x3fc00bcf58b8 { name = "href", value = "/turing" }),
-      #(Attr:0x3fc00bcf587c { name = "href", value = "/office-hours" }), etc
+    # [(Attr:0x3fc00bcf596c { name = "href", value = "/" }),
+    #  (Attr:0x3fc00bcf5930 { name = "href", value = "/about" }),
+    #  (Attr:0x3fc00bcf58f4 { name = "href", value = "/archive" }),
+    #  (Attr:0x3fc00bcf58b8 { name = "href", value = "/turing" }),
+    #  (Attr:0x3fc00bcf587c { name = "href", value = "/office-hours" }), etc
 
     assert_equal 226, results.count
     assert_instance_of Nokogiri::XML::Attr, results.first
