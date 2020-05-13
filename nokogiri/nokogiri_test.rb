@@ -80,7 +80,6 @@ class NokogiriTest < MiniTest::Test
     assert_includes results.map {|n| n.text }, "Married with Children"
   end
 
-
   ##################################################
   #     these tests all reference parts.xml        #
   ##################################################
@@ -134,7 +133,6 @@ class NokogiriTest < MiniTest::Test
     expected = ['all weather', 'studded', 'extra wide']
     assert_equal results, expected
   end
-
 
   ##################################################
   #     these tests all reference atom.xml        #
