@@ -19,7 +19,7 @@ _Questions or comments? hit me up in Turing's slack (`@josh_t`), or [open a git 
 
 # End Result
 
-After working through these exercises, you'll be able to appreciate and understand all of [this webscraping code](https://github.com/josh-works/ruby_web_scraping/blob/master/lib/scraper.rb):
+After working through these exercises, you'll be able to appreciate and understand all of [this webscraping code](https://github.com/josh-works/ruby_web_scraping/blob/master/lib/scraper.rb), which I built after I figured out all of this web scraping stuff:
 
 ```ruby
 # lib/scraper.rb
