@@ -18,13 +18,30 @@ class NokogiriTest < MiniTest::Test
 
     # every file we'll be reading is locate within the /docs_to_parse directory.
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
+    # require "pry"; binding.pry
     # Open up this 'shows.xml' file in your editor, so you can be "reading" the 
     # html as you parse it with Nokogiri.
     
     # results = doc.xpath('//character')
+    results = doc.css('character') # remember, css/xpath selectors are the same
+    
     # remember, use pry in here to inspect your results. Use
     # the #to_a method to easily see in your terminal what sort of
-    # results you're getting back from Nokogiri
+    # results you're getting back from Nokogiri, I.E. call:
+    # results.to_a 
+    # or
+    # doc.xpath('//character')
+    
+    # Expected results will look something like this: 
+    #(Element:0x3fccb9994394 { name = "character", children = [ #(Text "Al Bundy")] }),
+    #(Element:0x3fccb9d65f68 { name = "character", children = [ #(Text "Bud Bundy")] }),
+    #(Element:0x3fccb9d65ba8 { name = "character", children = [ #(Text "Marcy Darcy")] }),
+    #(Element:0x3fccb9d65810 { name = "character", children = [ #(Text "Larry Appleton")] }),
+    #(Element:0x3fccb9d65360 { name = "character", children = [ #(Text "Balki Bartokomous")] }),
+    #(Element:0x3fccb9d64fb4 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
+    #(Element:0x3fccb9d64bf4 { name = "character", children = [ #(Text "Templeton \"Face\" Peck")] }),
+    #(Element:0x3fccb9d64884 { name = "character", children = [ #(Text "\"B.A.\" Baracus")] }),
+    #(Element:0x3fccb9d64370 { name = "character", children = [ #(Text "\"Howling Mad\" Murdock")] })]]
 
     assert_equal 9, results.count
     assert_instance_of Nokogiri::XML::Element, results.first

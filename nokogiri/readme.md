@@ -1,27 +1,127 @@
-_This repo exists because I worked through [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c), and step 10 made a HUGE leap with nokogiri knowledge, and I felt skipped a huge piece I didn't understand. I made the exercise work, but I still didn't know enough about nokogiri to go solve novel problems with it._
+# Context
 
-_This collection of exercises will *quickly* get you comfortable enough in nokogiri to do fascinating things quickly using it_
+A while back, I wanted to build a little web scraping tool. I wanted to scrape the top-level comments of [this hacker news thread](https://news.ycombinator.com/item?id=22800136), to build a list of submitted personal websites.
+
+I ended up building [this simple web app](https://random-hn-blog.herokuapp.com/), which serves a random URL pulled from the top-level comments. Here's a visual of what I wanted to accomplish. I sequentially highlight top-level comments, then sub-comments with URLS _that I don't want to scrape URLs from_:
+
+![scraping urls](/images/show-hn-overview.gif)
+
+I've minimized the comments that don't have URLs, but notice that many comments _do_ have URLs. This meant I couldn't grab every single URL from the comments and serve those up; I needed to filter out many URLs that were listed in replies.
+
+Anyway, this seemed like a simple project. I've done _extremely basic_ scraping with the `nokogiri` gem in the past, and I knew it could do what I wanted.
+
+Nokogiri Obstical Course exists because I worked through [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c), and step 10 made a HUGE leap with nokogiri knowledge, and I felt skipped a huge piece I didn't understand. I made the exercise work, but I still didn't know enough about nokogiri to go solve novel problems with it._
+
+This collection of exercises duplicates my learning process for figuring out this basic web scraping, _from almost zero pre-existing knowledge_, and should deliver to you in just two or three hours what I spent 15-25 hours learning.
+
+_Questions or comments? hit me up in Turing's slack (`@josh_t`), or [open a git issue](https://github.com/josh-works/intermediate_ruby_obstacle_course/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)._
 
 
-_Questions or comments? hit me up in Turing's slack (`@josh_t`), open a git issue, etc._
+# End Result
 
+After working through these exercises, you'll be able to appreciate and understand all of [this webscraping code](https://github.com/josh-works/ruby_web_scraping/blob/master/lib/scraper.rb):
 
-I can add explanation later.
+```ruby
+# lib/scraper.rb
 
-To work through same exercises the Nokogiri docs give on [Searching a XML/HTML document](https://nokogiri.org/tutorials/searching_a_xml_html_document.html)
-
-Clone down this repo. 
-
+class Scraper
+  attr_reader :doc, :links
+  def initialize
+    @doc = Nokogiri.HTML(open("./practice_documents/hn_what_is_your_blog.html"))
+    @links = links
+  end
+  
+  def zero_indent_rows
+    doc.css('td[class="ind"] > img[width="0"]')
+  end
+  
+  def comments_with_zero_indent_siblings
+    zero_indent_rows.map do |td| 
+      td.parent.parent.css('.commtext').css('a')
+    end
+  end
+  
+  def links
+    comments_with_zero_indent_siblings.map do |a|
+      a.css('a').map do |link| 
+        link.attribute('href').value 
+      end
+    end.flatten
+  end
+end
 ```
+
+And, in running this code, we get an array of URLs from top-level comments like this:
+
+![end result of links](/images/links_01.jpg)
+
+
+## Pricing
+
+Free, currently.
+
+Soon, this resource will be available at a pricepoint of $100-$300, and here's why:
+
+If you're a professional software developer, your company pays at least $50/hr (possibly far more) for your labor. This document will help you obtain about 30 hours of learning (or, a full work-week of effort) in a half-day. 
+
+In other words, for this $150 course, _you will save your company $1350 in direct payroll costs, and more quickly build whatever it is you're trying to build_. It would be _irresponsible_ to spend 30 hours self-studying, when this resource exists.
+
+You could either spend 30 hours learning this stuff, for a total cost (in payroll) of $1,500, or you could spend $200 in payroll + the cost of this resource to obtain the same information.
+
+### If you have an external learning budget
+
+I will (soon) be pricing this at no less than $150. 
+
+The good news about "external learning budgets" is that buying this course with one telegraphs several things:
+1. you're a professional software developer, or at least at a company that puts money into you learning things
+2. You're not spending your own money on this course. You're spending _your company's money_ supporting the creation of resources _just like what you're reading right now_ in a way that furthers your goals and your company's goals. 
+
+### If you don't have an external learning budget
+
+I will price this resource at $30. It's expensive enough to require some minimum buy-in, so you'll put more effort into learning this, and cheap enough that if you're _not_ working as a software developer (yet) or are otherwise price-sensitive, you can self-select into this bucket.
+
+### If you don't have an external learning budget and you cannot afford the $30
+
+Obviously, by volume, most people in the world fall into this category. Please contact me (my email is available on my personal website) and ask for a coupon code. I'll give you a code that will make this course free to you. 
+
+If you live outside of the USA, _I would like you to have this course for free_. If you live in the USA and are not working as a software developer, _I would like you to have this course for free_. If you're working as a software developer, but have to spend your own money instead of your company's money, and $30 is too steep for you, _I would like you to have this course for free_. 
+
+
+-----------------------------------------
+
+# Lets start web scraping!
+
+Like I said, these are exercises that will rapidly walk _you_ through everything I learned about web scraping for this project, but you'll work through it in a fraction of the time it took me. The basic steps I took is as follows:
+
+1. Found a post on medium that claimed to teach me basic web scraping
+2. Dissatisfied with the post, I landed on the Nokogiri "basic web scraping" docs
+3. I found the docs _very_ difficult to quickly practice with, so I set up the basic infrastructure to start running _on my laptop_ the same "code" being run in the nokogiri docs.
+4. Started keeping a markdown file of all my efforts/code snippets/problem solving.
+5. I figured out how to "upgrade" the complexity of the scraping, by now scraping my own personal website, or other well-known websites.
+6. It was at this point that I realized I could convert my learnings into this Minitest-based "obstacle course", walking an engaged learner through the above four steps.
+7. A few rounds of edits, upgrades, and walking through this document with friends for their feedback, and this document is now available to you! 
+
+
+First, read [THE BEGINNER’S GUIDE: Scraping in Ruby Cheat Sheet](https://medium.com/@LindaVivah/the-beginner-s-guide-scraping-in-ruby-cheat-sheet-c4f9c26d1b8c)]. That sheds some insight, but not a lot. 
+
+Next, I ended up on the Nokogiri docs: [Searching a XML/HTML document](https://nokogiri.org/tutorials/searching_a_xml_html_document.html).
+
+The first few exercises will be implementing examples from those docs.
+
+
+Clone down this repo using the following URL:
+
+```shell
 $ git clone git@github.com:josh-works/intermediate_ruby_obstacle_course.git
+# if you need to use https: git clone https://github.com/josh-works/intermediate_ruby_obstacle_course.git
 $ cd intermediate_ruby_obstacle_courses/nokogiri
 $ bundle install
 ```
 
-At same relative path as this `readme`, run:
+Inside the `nokogiri` directory, at same relative path as this `readme`, run:
 
 ```
-$ ruby nokogiri_test.rb
+$ bundle exec ruby nokogiri_test.rb
 ```
 
 You should see a bunch of skips:
@@ -30,43 +130,51 @@ You should see a bunch of skips:
 
 Next, open up your "workspace". This will be the nokogiri test file, and the document we're working on, both easily visible so you can see what you're working on:
 
-Here's how I would recommend "setting up" these exercises:
-1. Make sure you can easily see in your editor the document we're working on parsing
+Here's how I would recommend setting up these exercises:
+
+1. Make sure you can easily see in your editor the document we're working on parsing. For the first few tests, you'll find it inside the `nokogiri/docs_to_parse` directory. It's called `shows.xml`. Open it up in one pane in your editor, so it's visible.
 2. Make sure you can easily see the _huge_ output that you'll be getting in Pry as practicing/figuring this all out.
+3. Have your terminal close-to-hand, and large enough to scan the massive output you'll get from `nokogiri`
+
+Here's approximately what I'd recommend you be able to see on your screen:
 
 ![ready to work through exercises](/images/scraping_30.jpg)
 
+Head over to [Searching an HTML / XML Document: Basic Searching](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#basic-searching) and lets get started.
+
+Here's the rough relationship between these docs, and the tests we're working on:
+
+![made these examples into minitest assertions](/images/scraping_31.jpg)
 
 Unskip the first test, and make it pass. Work through this blog post as you work through each test; this readme and the test file go hand-in-hand.
 
 For now, I've included the answers (commented out). Delete them and see if you can make the tests pass without any assistance.
 
-_I wrote each test approximately as I discovered things and wrote the tests. Here's my notes from that process_
+`xpath` and `css` selectors are interchangable. These two lines return the same value:
+
+```ruby
+doc.xpath('//character')
+doc.css('character')
+```
+
+So learning about XPATH selectors generalizes fully to CSS selectors, which I believe is more common. 
 
 # test_list_all_characters
  
  These exercises are working through the examples here: [Basic Searching (nokogiri docs)](https://nokogiri.org/tutorials/searching_a_xml_html_document.html#basic-searching)
 
-in the prompt:
+Add a `binding.pry` beneath where `doc` is defined on line 20 of the test file, and run your tests:
 
-```ruby
-require 'nokogiri'
-# => true
-> @doc = Nokogiri::XML(File.open("shows.xml"))
-# lots of output
-> @doc.xpath("//character")
-# => ["<character>Al Bundy</character>",
-#    "<character>Bud Bundy</character>",
-#    "<character>Marcy Darcy</character>",
-#    "<character>Larry Appleton</character>",
-#    "<character>Balki Bartokomous</character>",
-#    "<character>John \"Hannibal\" Smith</character>",
-#    "<character>Templeton \"Face\" Peck</character>",
-#    "<character>\"B.A.\" Baracus</character>",
-#    "<character>\"Howling Mad\" Murdock</character>"]
+Here's the workflow I expect you to follow for each test:
+
+![the output is uuuugly](/images/scraping_32.jpg)
+
+```shell
+$ bundle exec ruby nokogiri_test.rb
 ```
 
-Desired outcome:
+Remember, from the `Basic Scraping` guide in the `nokogiri` docs, this is the output we want to get using Nokogiri:
+
 
 ```
 # => ["<character>John \"Hannibal\" Smith</character>",
@@ -75,38 +183,37 @@ Desired outcome:
 #    "<character>\"Howling Mad\" Murdock</character>"]
 ```
 
+Once in the pry session:
+
+```ruby
+   16:     # skip
+   17:     # list of all the characters in all the shows in this document
+   18:
+   19:     # every file we'll be reading is locate within the /docs_to_parse directory.
+   20:     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
+=> 21:     require "pry"; binding.pry
+   22:     # Open up this 'shows.xml' file in your editor, so you can be "reading" the
+   23:     # html as you parse it with Nokogiri.
+   24:
+   25:     # results = doc.xpath('//character')
+   26:     results = doc.css('character') # remember, css/xpath selectors are the same
+   
+doc.css('character')
+=> [#<Nokogiri::XML::Element:0x3fcba4916928 name="character" children=[#<Nokogiri::XML::Text:0x3fcba4916748 "Al Bundy">]>, #<Nokogiri::XML::Element:0x3fcba4916518....]
+doc.css('character').to_a
+=> => [#(Element:0x3fcba4916928 { name = "character", children = [ #(Text "Al Bundy")] }),
+ #(Element:0x3fcba4916518 { name = "character", children = [ #(Text "Bud Bundy")] }),
 ```
 
-[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=[#<Nokogiri::XML::Text:0
-x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="ch
-aracter" children=[#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=[#<Nokogiri::XML::Text:0x
-3fe36f07afd4 "\"B.A.\" Baracus">]>, #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=[#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>]
+_This following aside is part of the reason I wanted to put this guide together. I spent probably thirty minutes trying to just format this output so I could see what the heck it actually is! I didn't think to try `to_a` until... a long time had passed_
 
-```
-
-This is how it looked in Pry:
+This is how it first looked in Pry, when I was first working through the basic scraping docs:
 
 ![rather difficult to read](/images/scraping_01.jpg)
 
-Here's the above line, spaced out a bit better:
+I couldn't figure out how to make it readable, besides manually pasting this text into my code editor and adding line breaks!
 
-```
-[#<Nokogiri::XML::Element:0x3fe36f0c7c30 name="character" children=
-    [#<Nokogiri::XML::Text:0x3fe36e97a6d0 "John \"Hannibal\" Smith">]>, 
- #<Nokogiri::XML::Element:0x3fe36f0a6d50 name="character" children=
-    [#<Nokogiri::XML::Text:0x3fe36f08e1b0 "Templeton \"Face\" Peck">]>, 
- #<Nokogiri::XML::Element:0x3fe36e96f08c name="character" children=
-    [#<Nokogiri::XML::Text:0x3fe36f07afd4 "\"B.A.\" Baracus">]>, 
- #<Nokogiri::XML::Element:0x3fe36e457a90 name="character" children=
-    [#<Nokogiri::XML::Text:0x3fe36e452428 "\"Howling Mad\" Murdock">]>
-]
-```
-
-So then I went hunting down the docs to see if I could reliably print the output of a nokogiri command, and it be reasonable!
-
-(This didn't seem too unreasonable...)
-
-None of this worked:
+I tried:
 
 ```ruby
 p @doc.xpath("//character")
@@ -114,6 +221,8 @@ p @doc.xpath("//character")
 puts @doc.xpath("//character")
 @doc.xpath("//character").join("\n")
 ```
+
+So then I went hunting down the `pry` docs to see if I could reliably print the output of a nokogiri command. Turns out no one really talks about this problem.
 
 I messed with my `~/.pryrc`, cuz I'd had an ignored deprecation warnings for a while. 
 
