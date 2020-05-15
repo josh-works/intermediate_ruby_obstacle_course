@@ -58,6 +58,6 @@ So, change into the `nokogiri` directory and work through the readme!
 
 These are generous, kind, competent, empathetic developers that have contributed to this project, and if they're ever available to hire, _hire them immediately_ because they won't be on the market for long
 
-- [Mark Modak](https://github.com/markevan100/)
 - [Alice Post](https://github.com/ap2322)
 - [Daniel Frampton](https://github.com/DanielEFrampton)
+- [Mark Modak](https://github.com/markevan100/)
