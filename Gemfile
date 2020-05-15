@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.5.8'
-
+gem 'minitest'
 gem 'nokogiri'
 gem 'pry'
+gem 'rake'
 gem 'rubocop'
