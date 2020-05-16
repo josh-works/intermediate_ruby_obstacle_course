@@ -54,7 +54,7 @@ class NokogiriTest < MiniTest::Test
     # Get the characters who performed in Dramas
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
 
-    # results = doc.xpath('//dramas//character')
+    results = doc.css('dramas character')
 
     # Desired output:
     # [(Element:0x3fbfb649df58 { name = "character", children = [ #(Text "John \"Hannibal\" Smith")] }),
@@ -70,7 +70,8 @@ class NokogiriTest < MiniTest::Test
 
   def test_get_first_drama_name_in_four_different_ways
     skip
-    # Get the first drama name back in _four_ different ways, using css and at_css
+    # Get the first drama name back in _four_ different ways, 
+    # using .css and .at_css
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
 
     # results_1 = doc.css('dramas name').first
@@ -102,12 +103,15 @@ class NokogiriTest < MiniTest::Test
   ##################################################
   def test_get_all_tires_belonging_to_aliceautoparts_using_xpath
     skip
+    # might be worth skipping this test. I've not seein this xml name-space thing
+    # used in the wild yet. 
+    
     # using xpath, get tires with the XML namespace value `http://alicesautoparts.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
     # Open up this 'parts.xml' file in your editor, so you can be "reading" the 
     # html as you parse it with Nokogiri.
-
-    # results = doc.xpath('//xmlns:tire', xmlns: "http://alicesautoparts.com/")
+    
+    results = doc.css('xmlns|tire', xmlns: "http://alicesautoparts.com/")
 
     assert_equal 3, results.count
     assert_includes results.map { |n| n.text }, "all weather"

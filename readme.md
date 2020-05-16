@@ -21,9 +21,24 @@ On the flip side
 
 > Write good tests for your views
 
-is actionable, and has the side effect of helping you get better at writing integration tests that use css-selector-based assertions.
+_is_ actionable, and has the side effect of helping you get better at writing integration tests that use css-selector-based assertions.
 
-To test your views, you need to understand the basics of parsing the DOM. To do this, you need to use a tool called `nokogiri`.
+Integration tests differ from unit tests, in that they should show all the individual bits of functionality of your app "integrated" together. They're often written in a format of:
+
+```
+when I visit logged_in_admin_dashboard_path
+I expect to see {account.name} in {some location}
+I expect to see {statistics} in {other page location}
+I expect to see {comments} in {another location}
+```
+
+The "location" pieces are usually defined with CSS selectors, which uses a mix of [Selenium](https://www.selenium.dev/), [Capybara](https://github.com/teamcapybara/capybara) and [Nokogiri](https://github.com/sparklemotion/nokogiri).
+
+These tests use `minitest`, but this knowledge will be perfectly portable to `rspec` testing as well. 
+
+So, this `nokogiri obstacle course` will help you write better integration tests!
+
+To write integration tests, you need to understand the basics of parsing the DOM. To do this, you need to use a tool called `nokogiri`.
 
 Beyond testing views, you can also use nokogiri to scrape websites.
 
@@ -33,24 +48,18 @@ Before I started this Nokogiri project, I said to myself:
 
 And could kinda-sorta stumble my way through some web scraping, but I couldn't do anything complicated with it, and didn't feel confident that I could sit down and scrape arbitrary data from an arbitrary webpage.
 
-So, change into the `nokogiri` directory and work through the readme!
+To get started, clone down this repo using the following URL:
 
+```shell
+$ git clone git@github.com:josh-works/intermediate_ruby_obstacle_course.git
+# if you need to use https: git clone https://github.com/josh-works/intermediate_ruby_obstacle_course.git
+$ cd intermediate_ruby_obstacle_courses
+$ bundle install
+$ atom . # or whatever command you use to open up a repo in your code editor
 ```
-> tree
-.
-├── images
-│   └── scraping_17.jpg
-├── nokogiri
-│   ├── docs_to_parse
-│   │   ├── atom.xml
-│   │   ├── employees.xml
-│   │   ├── josh_works_archive.html
-│   │   ├── parts.xml
-│   │   └── shows.xml
-│   ├── nokogiri_test.rb
-│   └── readme.md  <-------- you need to go here!
-└── readme.md      <-------- you are here
-```
+There's a `readme.md` file with detailed information on each of the 21 tests you'll work through, located in the `nokogiri` directory. Once you clone this repo down, open up the `readme`, and get to work!
+
+You can also navigate to https://github.com/josh-works/intermediate_ruby_obstacle_course/tree/master/nokogiri in your browser, to see what's in the README. 
 
 --------------------------
 
