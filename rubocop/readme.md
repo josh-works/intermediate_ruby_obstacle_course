@@ -10,7 +10,7 @@ Steps so far:
 2. Add/configure `.rubocop.yml` to project root
 3. Set useful starting points, cops, warning levels, etc.
 
-Lets checkout this repo at this commit: `9d9e910`, basically, right before I started adding anything to this file. 
+Lets checkout this repo at this commit: `9d9e910`, basically, right before I started adding anything to this file and making the recommended fixes. 
 
 ### Useful Rubocop-related commands
 
@@ -88,9 +88,36 @@ Now, lets see if we can set up a hook to run Rubocop every time we run our tests
 
 I'd like `rake test` or `rails test` to run Rubocop. 
 
+So, lets create what we need, and by that I mean "find something on Stack Overflow that gives us what we want": 
+
+```ruby
+# lib/tasks/test.rake
+require 'rubocop/rake_task'
+
+# Add additional test suite definitions to the default test task here
+namespace :test do
+  desc 'Runs RuboCop on specified directories'
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    # Dirs: app, lib, test
+    task.patterns = ['app/**/*.rb', 'lib/**/*.rb', 'test/**/*.rb']
+
+    # Make it easier to disable cops.
+    task.options << "--display-cop-names"
+
+    # Abort on failures (fix your code first)
+    task.fail_on_error = false
+  end
+end
+
+Rake::Task[:test].enhance ['test:rubocop']
+```
+
+
+
 
 ### Resources
 
 - [Rubocop Docs: Basic Usage](https://docs.rubocop.org/en/stable/basic_usage/)
 - [all Rubocop cops](https://github.com/rubocop-hq/rubocop/tree/master/lib/rubocop/cop)
 - [Running Rubocop Only On Modified Files](https://medium.com/devnetwork/running-rubocop-only-on-modified-files-a21aed86e06d)
+- [What is Rake in Ruby & How to Use it](https://www.rubyguides.com/2019/02/ruby-rake/)
