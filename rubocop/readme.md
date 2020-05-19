@@ -121,3 +121,7 @@ Rake::Task[:test].enhance ['test:rubocop']
 - [all Rubocop cops](https://github.com/rubocop-hq/rubocop/tree/master/lib/rubocop/cop)
 - [Running Rubocop Only On Modified Files](https://medium.com/devnetwork/running-rubocop-only-on-modified-files-a21aed86e06d)
 - [What is Rake in Ruby & How to Use it](https://www.rubyguides.com/2019/02/ruby-rake/)
+
+
+https://github.com/AtomLinter/linter-rubocop
+https://docs.rubocop.org/en/stable/integration_with_other_tools/

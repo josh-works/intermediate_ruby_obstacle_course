@@ -94,8 +94,8 @@ class NokogiriTest < MiniTest::Test
     # if stuck, look at the readme for an explainer
 
     assert_equal 2, results.count
-    assert_includes results.map {|n| n.text }, "Perfect Strangers"
-    assert_includes results.map {|n| n.text }, "Married with Children"
+    assert_includes results.map(&:text), "Perfect Strangers"
+    assert_includes results.map(&:text), "Married with Children"
   end
 
   ##################################################
