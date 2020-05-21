@@ -1,5 +1,38 @@
-inherit_from: .rubocop_todo.yml
+# We can build a single rubocop source-of-truth config document
+# per https://www.rubocop.org/en/stable/configuration/#inheriting-configuration-from-a-remote-url
+# inherit_from: .rubocop_todo.yml
 
 AllCops: 
   NewCops: enable
+  UseCache: true # this is the default setting, wanted to make explicit
+  
+Metrics/ClassLength:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+  
+Layout/LineLength:
+  Max: 110
+  
+Metrics/MethodLength:
+  Max: 20
+  
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
+Documentation:
+  Enabled: false
+  
+Metrics/AbcSize:
+  Enabled: false
+
+# Single vs. double quote strings. Hard question to answer
+# https://github.com/rubocop-hq/ruby-style-guide/issues/184
+# But I'm landing on no preference, as it feels bike-sheddy
+# for now.   
+Style/StringLiterals:
+  Enabled: false 
+  # EnforcedStyle: single_quotes # 38 offenses
+  # EnforcedStyle: double_quotes # 56 offenses
   

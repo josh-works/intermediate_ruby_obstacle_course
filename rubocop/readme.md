@@ -112,6 +112,46 @@ end
 Rake::Task[:test].enhance ['test:rubocop']
 ```
 
+Other goodies to know with Rubocop:
+
+### Show violations, grouped by count
+
+```
+rubycop --format offenses
+```
+
+[Formatters `offense count` documentation](https://docs.rubocop.org/en/latest/formatters/#offense-count-formatter)
+
+![show offense count](/images/rubocop-formatters-summary.jpg)
+
+
+This does what I want:
+
+![i am dumb](/images/rubocop-tried-to-execute-shell-command-wrong-place.jpg)
+
+```ruby
+
+namespace :rubocop do
+  desc 'Run RuboCop on modified files'
+  task :modified do
+    # running shell comands directly is ugly, but currently good enough?
+    # https://stackoverflow.com/questions/15008751/how-to-integrate-rubocop-with-rake
+    exec 'git ls-files -m | xargs ls -1 2>/dev/null | grep "\.rb$" | xargs rubocop --format simple'
+  end
+
+  desc 'Run RuboCop on staged files'
+  task :staged do
+    puts "Run RuboCop on staged files"
+    exec('git diff --staged --name-only | xargs ls -1 2>/dev/null | grep "\.rb$" | xargs rubocop --format simple')
+  end
+
+  desc 'Auto-fix RuboCop lint errors in staged files'
+  task :fix do
+    exec('git diff --staged --name-only | xargs ls -1 2>/dev/null | grep "\.rb$" | xargs rubocop --auto-correct')
+  end
+end
+
+```
 
 
 
@@ -121,7 +161,8 @@ Rake::Task[:test].enhance ['test:rubocop']
 - [all Rubocop cops](https://github.com/rubocop-hq/rubocop/tree/master/lib/rubocop/cop)
 - [Running Rubocop Only On Modified Files](https://medium.com/devnetwork/running-rubocop-only-on-modified-files-a21aed86e06d)
 - [What is Rake in Ruby & How to Use it](https://www.rubyguides.com/2019/02/ruby-rake/)
-
+- [RuboCop in legacy projects, part 1: TODOs and TODON’Ts](https://medium.com/@scottm/rubocop-in-legacy-projects-part-1-todos-and-todonts-877ace9f23b7)
+- [RuboCop in legacy projects, part 2: Focus on the present](https://medium.com/@scottm/rubocop-in-legacy-projects-part-2-focus-on-the-present-8d3df0626a29)
 
 https://github.com/AtomLinter/linter-rubocop
 https://docs.rubocop.org/en/stable/integration_with_other_tools/
