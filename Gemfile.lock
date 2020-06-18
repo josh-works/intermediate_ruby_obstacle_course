@@ -3,6 +3,7 @@ GEM
   specs:
     ast (2.4.0)
     coderay (1.1.2)
+    foreman (0.87.1)
     method_source (1.0.0)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
@@ -31,6 +32,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  foreman
   minitest
   nokogiri
   pry
