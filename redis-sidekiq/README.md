@@ -183,10 +183,28 @@ If you want to kill the process, you can use `kill <pid>`, like so:
 ------------------------------------
 
  
+So, once you’ve got redis running, to watch the logs for JUST hsets and lpushes, run:
+
+```
+redis-cli monitor | grep -E "(hset|lpush)"
+```
+
+run `tldr grep` in your terminal to see the "too long, didn't read" overview of `grep`, to see what that `-E` flag does!
+
+`tldr` returns `command not found`?
+
+Go ahead and install it! [https://github.com/tldr-pages/tldr](https://github.com/tldr-pages/tldr)
+
+or do `brew install tldr`
 
 
+What does `hset` and `lpush` do?
+
+- [redis docs for `hset`](https://redis.io/commands/hset)
+- [redis docs for `lpush`](https://redis.io/commands/lpush)
 
 
+lead = Lead.new( city: "Golden", email: "thompsonjoshd+leadtest03@gmail.com", kind: "match", name: "Josh Thompson", sent_at: Time.current )
 
 
 
