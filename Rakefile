@@ -1,4 +1,4 @@
-Mrequire 'rubocop/rake_task'
+require 'rubocop/rake_task'
 
 task default: [:test]
 # require 'rubocop/rake_task'
