@@ -4,6 +4,10 @@ This repo contains a collection of "obstacle courses" that are laser-focused on 
 
 I'm building these resources to help myself learn (slowly) and then to be able to hand this resource to someone else, and in a _fraction_ of the time it took me to learn this, I want them to be able to learn >60% of what I've learned.
 
+_note: You probably got here by way of [intermediateruby.com](https://intermediateruby.com/intermediate-ruby-obstacle-course). Head over there for more context and information:_
+
+_[https://intermediateruby.com/intermediate-ruby-obstacle-course](https://intermediateruby.com/intermediate-ruby-obstacle-course)_
+
 ### Current "obstacle courses"
 
 - Nokogiri Obstacle Course
