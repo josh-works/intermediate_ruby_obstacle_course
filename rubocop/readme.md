@@ -129,6 +129,12 @@ This does what I want:
 
 ![i am dumb](/images/rubocop-tried-to-execute-shell-command-wrong-place.jpg)
 
+### Run Rubocop only on modified files, using `git ls-files`
+
+So, after some futzing around, I figured out how to run Rubocop only on modified files. I don't really love this, but https://stackoverflow.com/questions/15008751/how-to-integrate-rubocop-with-rake gave me the info I needed.
+
+Take a look at what I pass through to `exec` in each of the following tasks:
+
 ```ruby
 
 namespace :rubocop do
