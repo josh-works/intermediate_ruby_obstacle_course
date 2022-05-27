@@ -95,8 +95,31 @@ Team.members.first
 => mnu
 ```
 
+### rails g model
 
-Learnings:
+`rails db:seed`
+
+`rails db:create`
+
+#### I need postgresql:
+
+```
+ActiveRecord::ConnectionNotEstablished: invalid integer value
+```
+
+```
+brew install postgresql
+```
+
+... gonna take a shower, see if it's working when I'm back, then should be able to do `rails db:seed` and see errors about missing classes/models/tables
+
+I would have expected the `rails.new` installation that I did to pick this up.
+
+ugh this was mega painful.
+
+had to 
+
+## Learnings:
 
 - [ ] quickly model DB tables with GUIDs & any params gathering data from any source (CSV, JSON API, etc)
 - [ ] relate that data with itself, keeping both your own db schema (GUIDS) and internal references (`activity.id` => `CSV [id]`), so i'll need to be smart about foreign keys
