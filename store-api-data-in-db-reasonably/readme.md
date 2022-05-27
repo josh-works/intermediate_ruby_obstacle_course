@@ -1,5 +1,9 @@
 # README
 
+_implementation repo here: [https://github.com/josh-works/mobility-maps/tree/main](https://github.com/josh-works/mobility-maps/tree/main)_
+
+This is a time-trial based on my [intermediate ruby obstacle course: ](https://github.com/josh-works/intermediate_ruby_obstacle_course)
+
 I want to model data quickly in a DB, based on the raw data coming from [https://github.com/josh-works/strava_run_polylines_osm](https://github.com/josh-works/strava_run_polylines_osm)
 
 Really should take just a few minutes. Lets proceed...
